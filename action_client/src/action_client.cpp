@@ -19,14 +19,14 @@ Action Client Specs
 #include <string>
 #include <iostream>
 
-#include "action_client/action/TrackObject.hpp"
+#include "custom_interfaces/action/detect.hpp"
 #include "rclcpp/rclcpp.hpp"
 #include "rclcpp_action/rclcpp_action.hpp"
 
 class TrackObjectClient : public rclcpp::Node
 {
 public:
-  using TrackObject = action_client::action::TrackObject;
+  using TrackObject = custom_interfaces::action::TrackObject;
   using GoalHandleTrackObject = rclcpp_action::ClientGoalHandle<TrackObject>;
 
   explicit TrackObjectClient(const rclcpp::NodeOptions & node_options = rclcpp::NodeOptions())
