@@ -1,0 +1,233 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-bbe1175a5d57ef77f1bb.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17
+					]
+				},
+				{
+					"build" : "action_client__py",
+					"jsonFile" : "directory-action_client__py-270e5d0e459bcf65d2f6.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/build/action_client/action_client__py",
+					"targetIndexes" : 
+					[
+						2
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1
+					],
+					"name" : "action_client",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "action_client::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-action_client-18226fd5ebb3c025883e.json",
+					"name" : "action_client",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "action_client__cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-action_client__cpp-56220d86a5472a748711.json",
+					"name" : "action_client__cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "action_client__py::@b1094be081400309e554",
+					"jsonFile" : "target-action_client__py-faabcb20b00d92146c54.json",
+					"name" : "action_client__py",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "action_client__rosidl_generator_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-action_client__rosidl_generator_c-0628b2936a06e7bcc171.json",
+					"name" : "action_client__rosidl_generator_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "action_client__rosidl_generator_py::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-action_client__rosidl_generator_py-dc95465639baf337c109.json",
+					"name" : "action_client__rosidl_generator_py",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "action_client__rosidl_typesupport_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-action_client__rosidl_typesupport_c-ee6ef5c8bdb9ae8795db.json",
+					"name" : "action_client__rosidl_typesupport_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "action_client__rosidl_typesupport_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-action_client__rosidl_typesupport_c__pyext-8ea1df57ab1c3044e054.json",
+					"name" : "action_client__rosidl_typesupport_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "action_client__rosidl_typesupport_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-action_client__rosidl_typesupport_cpp-70627a3e8dc1f61e3f58.json",
+					"name" : "action_client__rosidl_typesupport_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "action_client__rosidl_typesupport_fastrtps_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-action_client__rosidl_typesupport_fastrtps_c-a1945940596c85ba5ec6.json",
+					"name" : "action_client__rosidl_typesupport_fastrtps_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "action_client__rosidl_typesupport_fastrtps_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-action_client__rosidl_typesupport_fastrtps_c__pyext-621649265faf7ee60953.json",
+					"name" : "action_client__rosidl_typesupport_fastrtps_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "action_client__rosidl_typesupport_fastrtps_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-action_client__rosidl_typesupport_fastrtps_cpp-f74982f8794b2112f571.json",
+					"name" : "action_client__rosidl_typesupport_fastrtps_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "action_client__rosidl_typesupport_introspection_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-action_client__rosidl_typesupport_introspection_c-f0a0b21eaf1f1d3e7c5a.json",
+					"name" : "action_client__rosidl_typesupport_introspection_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "action_client__rosidl_typesupport_introspection_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-action_client__rosidl_typesupport_introspection_c__pyext-4255662b46fca5d03601.json",
+					"name" : "action_client__rosidl_typesupport_introspection_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "action_client__rosidl_typesupport_introspection_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-action_client__rosidl_typesupport_introspection_cpp-af0d4b08589b825fa99a.json",
+					"name" : "action_client__rosidl_typesupport_introspection_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "action_client_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-action_client_uninstall-3a574dfa987c80f7b7ba.json",
+					"name" : "action_client_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_build_action_client_egg::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_build_action_client_egg-a3a41d8be5483f286409.json",
+					"name" : "ament_cmake_python_build_action_client_egg",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_copy_action_client::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_copy_action_client-adccf3475aef6bb3ed6e.json",
+					"name" : "ament_cmake_python_copy_action_client",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-e08505cc4af812c2a6c0.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/build/action_client",
+		"source" : "/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/action_client"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

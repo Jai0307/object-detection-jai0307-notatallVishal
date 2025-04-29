@@ -1,0 +1,1 @@
+/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/build/input/ament_cmake_environment_hooks/local_setup.bash

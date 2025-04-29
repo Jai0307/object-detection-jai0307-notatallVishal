@@ -2,6 +2,7 @@
     #include <rclcpp/rclcpp.hpp>
     #include <thread>
     #include <iostream>
+    #include "std_msgs/msg/string.hpp"
     #include <string>
     
     class InputMonitorNode : public rclcpp::Node
@@ -9,7 +10,7 @@
     public:
       InputMonitorNode() : Node("input_monitor_node")
       {
-		publisher_ = this->create_publisher<std_msgs::msgs:String>("input_topic", 10);
+		publisher_ = this->create_publisher<std_msgs::msg::String>("input_topic", 10);
         RCLCPP_INFO(this->get_logger(), "Node started. Type input below:");
         input_thread_ = std::thread(&InputMonitorNode::readInput, this);
       }
@@ -27,12 +28,14 @@
 		
       void readInput()
       {
-		auto message = std_msgs::msgs:String; 
+		//auto message = std_msgs::msgs:String; 
         std::string input;
         while (rclcpp::ok() && keep_running_) {
           std::cout << ">>> ";
           std::getline(std::cin, input);
           if (!input.empty()) {
+	    auto message = std_msgs::msg::String();
+	    message.data = input;
             RCLCPP_INFO(this->get_logger(), "User typed: '%s'", input.c_str());
 			message.data = input;
 			publisher_->publish(message);
@@ -42,6 +45,7 @@
     
       std::thread input_thread_;
       bool keep_running_ = true;
+     rclcpp::Publisher<std_msgs::msg::String>::SharedPtr publisher_;
     };
     
     int main(int argc, char *argv[])

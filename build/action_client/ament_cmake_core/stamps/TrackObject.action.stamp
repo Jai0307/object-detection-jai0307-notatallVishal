@@ -1,0 +1,10 @@
+# Goal
+string object_name
+
+---
+# Feedback
+string status_message
+
+---
+# Result
+bool success
