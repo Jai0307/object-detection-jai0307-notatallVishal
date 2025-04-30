@@ -6,34 +6,34 @@
 #include "rclcpp/rclcpp.hpp"
 #include "rclcpp_action/rclcpp_action.hpp"
 
-#include "custom_interfaces/action/move.hpp"
+#include "action_client/action/trackObject.hpp"
 #include "geometry_msgs/msg/twist.hpp"
 #include "nav_msgs/msg/odometry.hpp"
 #include "std_msgs/msg/bool.hpp"
 #include "sensor_msgs/msg/laser_scan.hpp"
 
 
-class MyActionServer : public rclcpp::Node
+class trackObjectServer : public rclcpp::Node
  {
 public:
   using Move = custom_interfaces::action::Move;
   using GoalHandleMove = rclcpp_action::ServerGoalHandle<Move>;
 
-  explicit MyActionServer(const rclcpp::NodeOptions & options = rclcpp::NodeOptions())
-  : Node("my_action_server", options)
+  explicit trackObjectServer(const rclcpp::NodeOptions & options = rclcpp::NodeOptions())
+  : Node("server", options)
   {
     using namespace std::placeholders;
 
     this->action_server_ = rclcpp_action::create_server<Move>(
       this,
       "move_robot",
-      std::bind(&MyActionServer::handle_goal, this, _1, _2),
-      std::bind(&MyActionServer::handle_cancel, this, _1),
-      std::bind(&MyActionServer::handle_accepted, this, _1));
+      std::bind(&trackObjectServer::handle_goal, this, _1, _2),
+      std::bind(&trackObjectServer::handle_cancel, this, _1),
+      std::bind(&trackObjectServer::handle_accepted, this, _1));
 
     publisher_ = this->create_publisher<geometry_msgs::msg::Twist>("cmd_vel", 10);
 	subscription_ = this->create_subscription<nav_msgs::msg::Odometry>(
-        "model/vehicle_blue/odometry", 10, std::bind(&MyActionServer::topic_callback, this, _1));
+        "model/vehicle_blue/odometry", 10, std::bind(&trackObjectServer::topic_callback, this, _1));
 
   }
 
@@ -71,7 +71,7 @@ private:
   {
     using namespace std::placeholders;
     // this needs to return quickly to avoid blocking the executor, so spin up a new thread
-    std::thread{std::bind(&MyActionServer::execute, this, _1), goal_handle}.detach();
+    std::thread{std::bind(&trackObjectServer::execute, this, _1), goal_handle}.detach();
   }
 
   void execute(const std::shared_ptr<GoalHandleMove> goal_handle)
@@ -98,13 +98,13 @@ private:
     }
 	
   }
-};  // class MyActionServer
+};  // class trackObjectServer
 
 int main(int argc, char ** argv)
 {
   rclcpp::init(argc, argv);
 
-  auto action_server = std::make_shared<MyActionServer>();
+  auto action_server = std::make_shared<trackObjectServer>();
     
   rclcpp::executors::MultiThreadedExecutor executor;
   executor.add_node(action_server);

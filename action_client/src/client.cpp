@@ -3,20 +3,20 @@
 #include <string>
 #include <iostream>
 
-#include "custom_interfaces/action/move.hpp"
+#include "action_client/action/trackObject.hpp"
 #include "rclcpp/rclcpp.hpp"
 #include "rclcpp_action/rclcpp_action.hpp"
 
 class MyActionClient : public rclcpp::Node
 {
 public:
-  using Move = custom_interfaces::action::Move;
+  using Move = action_client::action::TrackObject;
   using GoalHandleMove = rclcpp_action::ClientGoalHandle<Move>;
 
   explicit MyActionClient(const rclcpp::NodeOptions & node_options = rclcpp::NodeOptions())
-  : Node("my_action_client", node_options), goal_done_(false)
+  : Node("client", node_options), goal_done_(false)
   {
-    this->client_ptr_ = rclcpp_action::create_client<Move>(
+    this->client_ptr_ = rclcpp_action::create_client<TrackObject>(
       this->get_node_base_interface(),
       this->get_node_graph_interface(),
       this->get_node_logging_interface(),
