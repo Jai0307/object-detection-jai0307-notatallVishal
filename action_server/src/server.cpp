@@ -34,9 +34,10 @@ Action Server Specs
 
 #include "rclcpp/rclcpp.hpp"
 #include "rclcpp_action/rclcpp_action.hpp"
-
-#include "vision_msgs/msg/Detection2DArray.hpp"
-#include "action_client/action/trackObject.hpp"
+#include <vision_msgs/msg/detection2_d_array.hpp>
+#include <vision_msgs/msg/detection2_d.hpp>
+#include <vision_msgs/msg/object_hypothesis_with_pose.hpp>
+#include "action_client/action/TrackObject.hpp"
 #include "geometry_msgs/msg/twist.hpp"
 #include "nav_msgs/msg/odometry.hpp"
 #include "std_msgs/msg/bool.hpp"
@@ -50,34 +51,34 @@ enum trackingState_t = { /*States to determine movement */
 	T_STOP /* Complete State */
 	};
 
-class trackObjectServer : public rclcpp::Node
+class TrackObjectServer : public rclcpp::Node
  {
 public:
-  using trackObject = action_client::action::trackObject;
-  using GoalHandleTrackObject = rclcpp_action::ClientGoalHandle<trackObject>;
+  using TrackObject = action_client::action::TrackObject;
+  using GoalHandleTrackObject = rclcpp_action::ClientGoalHandle<TrackObject>;
 
-  explicit trackObjectServer(const rclcpp::NodeOptions & options = rclcpp::NodeOptions())
+  explicit TrackObjectServer(const rclcpp::NodeOptions & options = rclcpp::NodeOptions())
   : Node("track_object_server", options)
   {
     using namespace std::placeholders;
 
-    this->action_server_ = rclcpp_action::create_server<trackObject>(
+    this->action_server_ = rclcpp_action::create_server<TrackObject>(
       this,
       "move_robot",
-      std::bind(&trackObjectServer::handle_goal, this, _1, _2),
-      std::bind(&trackObjectServer::handle_cancel, this, _1),
-      std::bind(&trackObjectServer::handle_accepted, this, _1));
+      std::bind(&TrackObjectServer::handle_goal, this, _1, _2),
+      std::bind(&TrackObjectServer::handle_cancel, this, _1),
+      std::bind(&TrackObjectServer::handle_accepted, this, _1));
 
     publisher_ = this->create_publisher<geometry_msgs::msg::Twist>("cmd_vel", 10);
 	
 	/* Subscribe to detections_output and depth */
 	
 	cameraSubscription_ = this->create_subscription<vision_msgs::msgs::Detection2DArray>(
-		"/detections_output", 10, std::bind(&trackObjectServer::camera_callback), this, _1);
+		"/detections_output", 10, std::bind(&TrackObjectServer::camera_callback), this, _1);
 	
 	
-	subscription_ = this->create_subscription<:: ::>(
-        "/dep_dist", 10, std::bind(&trackObjectServer::depth_callback, this, _1));
+	depthSubscription_ = this->create_subscription<:: ::>(
+        "/dep_dist", 10, std::bind(&TrackObjectServer::depth_callback, this, _1));
 
   }
 
@@ -138,13 +139,32 @@ private:
 	};
 
 
+  /* Camera Stored variables */
+  std::string reqObjectName;
+  vision_msgs::msg::Detection2D reqObject;
+  bool objFound;
+
   rclcpp_action::Server<Move>::SharedPtr action_server_;
   rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr publisher_;
-  rclcpp::Subscription<nav_msgs::msg::Odometry>::SharedPtr subscription_;
+  rclcpp::Subscription<vision_msgs::msgs::Detection2DArray>::SharedPtr cameraSubscription_;
 
 
-  void camera_callback(const /* whatever the type is */ msg) {
+  void camera_callback(const vision_msgs::msgs::Detection2DArray::SharedPtr msg) {
+	  objFound = false; 
+	  
+	  for(const auto &detection : msg->detections) {
+		  std::string detected_object = detection.results[0].hypothesis.class_id;
 
+            if (detected_object == reqObjectName) {
+                RCLCPP_INFO(this->get_logger(), "Requested object '%s' found!", reqObjectName.c_str());
+				reqObject = detection;
+                objFound = true;
+                return;  // Exit loop once found
+            }
+
+	  }
+	  
+	  return;
   }
   
   void depth_callback(const /* whatever the type is */ msg) {
@@ -153,7 +173,7 @@ private:
   
   rclcpp_action::GoalResponse handle_goal(
     const rclcpp_action::GoalUUID & uuid,
-    std::shared_ptr<const trackObject::Goal> goal)
+    std::shared_ptr<const TrackObject::Goal> goal)
   {
 	
 	if(COCO_ObjSet.find(goal->object_name) == COCO_ObjSet.end()) {
@@ -163,6 +183,7 @@ private:
 	
     (void)uuid;
 	RCLCPP_INFO(this->get_logger(), "Accepted request to track: '%s'", goal->object_name.c_str());
+	reqObject = goal->object_name;
     return rclcpp_action::GoalResponse::ACCEPT_AND_EXECUTE;
   }
 
@@ -178,7 +199,7 @@ private:
   {
     using namespace std::placeholders;
     // this needs to return quickly to avoid blocking the executor, so spin up a new thread
-    std::thread{std::bind(&trackObjectServer::execute, this, _1), goal_handle}.detach();
+    std::thread{std::bind(&TrackObjectServer::execute, this, _1), goal_handle}.detach();
   }
 
   void 
@@ -187,10 +208,10 @@ private:
   {
     RCLCPP_INFO(this->get_logger(), "[LOG] Executing goal");
     const auto goal = goal_handle->get_goal();
-    auto feedback = std::make_shared<trackObject::Feedback>();
+    auto feedback = std::make_shared<TrackObject::Feedback>();
     auto & message = feedback->feedback;
     message = "Starting movement...";
-    auto result = std::make_shared<trackObject::Result>();
+    auto result = std::make_shared<TrackObject::Result>();
     auto move = geometry_msgs::msg::Twist();
 	    
 	rclcpp::Rate loop_rate(50);
@@ -207,13 +228,13 @@ private:
     }
 	
   }
-};  // class trackObjectServer
+};  // class TrackObjectServer
 
 int main(int argc, char ** argv)
 {
   rclcpp::init(argc, argv);
 
-  auto action_server = std::make_shared<trackObjectServer>();
+  auto action_server = std::make_shared<TrackObjectServer>();
     
   rclcpp::executors::MultiThreadedExecutor executor;
   executor.add_node(action_server);

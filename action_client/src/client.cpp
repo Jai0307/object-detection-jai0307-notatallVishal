@@ -19,20 +19,20 @@ Action Client Specs
 #include <string>
 #include <iostream>
 
-#include "action_client/action/trackObject.hpp"
+#include "action_client/action/TrackObject.hpp"
 #include "rclcpp/rclcpp.hpp"
 #include "rclcpp_action/rclcpp_action.hpp"
 
-class trackObjectClient : public rclcpp::Node
+class TrackObjectClient : public rclcpp::Node
 {
 public:
-  using trackObject = action_client::action::trackObject;
-  using GoalHandleTrackObject = rclcpp_action::ClientGoalHandle<trackObject>;
+  using TrackObject = action_client::action::TrackObject;
+  using GoalHandleTrackObject = rclcpp_action::ClientGoalHandle<TrackObject>;
 
-  explicit trackObjectClient(const rclcpp::NodeOptions & node_options = rclcpp::NodeOptions())
+  explicit TrackObjectClient(const rclcpp::NodeOptions & node_options = rclcpp::NodeOptions())
   : Node("track_object_client", node_options), goal_done_(false)
   {
-    this->client_ptr_ = rclcpp_action::create_client<trackObject>(
+    this->client_ptr_ = rclcpp_action::create_client<TrackObject>(
       this->get_node_base_interface(),
       this->get_node_graph_interface(),
       this->get_node_logging_interface(),
@@ -41,11 +41,11 @@ public:
 
 
 	subscription_ = this->create_subscription<std_msgs::msgs::String>("input_topic", 10, 
-					std::bind(&trackObjectClient::input_callback, this, _1);
+					std::bind(&TrackObjectClient::input_callback, this, _1);
 					
     this->timer_ = this->create_wall_timer(
       std::chrono::milliseconds(500),
-      std::bind(&trackObjectClient::send_goal, this));
+      std::bind(&TrackObjectClient::send_goal, this));
   }
 
   bool is_goal_done() const
@@ -71,7 +71,7 @@ public:
       return;
     }
 
-    auto goal_msg = trackObject::Goal();
+    auto goal_msg = TrackObject::Goal();
 	
 
     goal_msg.time_goal = 5;
@@ -80,7 +80,7 @@ public:
 
     RCLCPP_INFO(this->get_logger(), "Sending goal");
 
-    auto send_goal_options = rclcpp_action::Client<trackObject>::SendGoalOptions();
+    auto send_goal_options = rclcpp_action::Client<TrackObject>::SendGoalOptions();
                 
     send_goal_options.goal_response_callback =
       std::bind(&MyActionClient::goal_response_callback, this, _1);
@@ -95,7 +95,7 @@ public:
   }
 
 private:
-  rclcpp_action::Client<trackObject>::SharedPtr client_ptr_;
+  rclcpp_action::Client<TrackObject>::SharedPtr client_ptr_;
   rclcpp::Subscription<std_msgs::msg::String>::SharedPtr subscription_;
   std::string objectName;
   rclcpp::TimerBase::SharedPtr timer_;
@@ -117,7 +117,7 @@ private:
 
   void feedback_callback(
     GoalHandleTrackObject::SharedPtr goal_handler,
-    const std::shared_ptr<const trackObject::Feedback> feedback)
+    const std::shared_ptr<const TrackObject::Feedback> feedback)
   {
     RCLCPP_INFO(
       this->get_logger(), "Feedback received: %s", feedback->feedback.c_str());
