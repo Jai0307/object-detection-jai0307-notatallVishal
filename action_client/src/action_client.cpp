@@ -83,13 +83,13 @@ public:
     auto send_goal_options = rclcpp_action::Client<Detect>::SendGoalOptions();
                 
     send_goal_options.goal_response_callback =
-      std::bind(&MyActionClient::goal_response_callback, this, _1);
+      std::bind(&TrackObjectClient::goal_response_callback, this, _1);
 
     send_goal_options.feedback_callback =
-      std::bind(&MyActionClient::feedback_callback, this, _1, _2);
+      std::bind(&TrackObjectClient::feedback_callback, this, _1, _2);
 
     send_goal_options.result_callback =
-      std::bind(&MyActionClient::result_callback, this, _1);
+      std::bind(&TrackObjectClient::result_callback, this, _1);
       
     auto goal_handle_future = this->client_ptr_->async_send_goal(goal_msg, send_goal_options);
   }
