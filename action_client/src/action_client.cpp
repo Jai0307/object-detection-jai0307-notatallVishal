@@ -26,13 +26,13 @@ Action Client Specs
 class TrackObjectClient : public rclcpp::Node
 {
 public:
-  using TrackObject = custom_interfaces::action::TrackObject;
-  using GoalHandleTrackObject = rclcpp_action::ClientGoalHandle<TrackObject>;
+  using Detect = custom_interfaces::action::Detect;
+  using GoalHandleDetect = rclcpp_action::ClientGoalHandle<Detect>;
 
   explicit TrackObjectClient(const rclcpp::NodeOptions & node_options = rclcpp::NodeOptions())
   : Node("track_object_client", node_options), goal_done_(false)
   {
-    this->client_ptr_ = rclcpp_action::create_client<TrackObject>(
+    this->client_ptr_ = rclcpp_action::create_client<Detect>(
       this->get_node_base_interface(),
       this->get_node_graph_interface(),
       this->get_node_logging_interface(),
@@ -71,7 +71,7 @@ public:
       return;
     }
 
-    auto goal_msg = TrackObject::Goal();
+    auto goal_msg = Detect::Goal();
 	
 
     goal_msg.time_goal = 5;
@@ -80,7 +80,7 @@ public:
 
     RCLCPP_INFO(this->get_logger(), "Sending goal");
 
-    auto send_goal_options = rclcpp_action::Client<TrackObject>::SendGoalOptions();
+    auto send_goal_options = rclcpp_action::Client<Detect>::SendGoalOptions();
                 
     send_goal_options.goal_response_callback =
       std::bind(&MyActionClient::goal_response_callback, this, _1);
@@ -95,7 +95,7 @@ public:
   }
 
 private:
-  rclcpp_action::Client<TrackObject>::SharedPtr client_ptr_;
+  rclcpp_action::Client<Detect>::SharedPtr client_ptr_;
   rclcpp::Subscription<std_msgs::msg::String>::SharedPtr subscription_;
   std::string objectName;
   rclcpp::TimerBase::SharedPtr timer_;
@@ -106,7 +106,7 @@ private:
 	objectName = msg->data;
   }
 
-  void goal_response_callback(const GoalHandleTrackObject::SharedPtr & goal_handle)
+  void goal_response_callback(const GoalHandleDetect::SharedPtr & goal_handle)
   {
     if (!goal_handle) {
       RCLCPP_ERROR(this->get_logger(), "Goal was rejected by server");
@@ -116,8 +116,8 @@ private:
   }
 
   void feedback_callback(
-    GoalHandleTrackObject::SharedPtr goal_handler,
-    const std::shared_ptr<const TrackObject::Feedback> feedback)
+    GoalHandleDetect::SharedPtr goal_handler,
+    const std::shared_ptr<const Detect::Feedback> feedback)
   {
     RCLCPP_INFO(
       this->get_logger(), "Feedback received: %s", feedback->feedback.c_str());
@@ -127,7 +127,7 @@ private:
 	 }
   }
 
-  void result_callback(const GoalHandleTrackObject::WrappedResult & result)
+  void result_callback(const GoalHandleDetect::WrappedResult & result)
   {
     this->goal_done_ = true;
     switch (result.code) {
@@ -148,12 +148,12 @@ private:
     RCLCPP_INFO(this->get_logger(), "Result received: %s", result.result->result.c_str());
 
   }
-};  // class MyActionClient
+};  // class TrackObjectClient
 
 int main(int argc, char ** argv)
 {
   rclcpp::init(argc, argv);
-  auto action_client = std::make_shared<MyActionClient>();
+  auto action_client = std::make_shared<TrackObjectClient>();
     
   rclcpp::executors::MultiThreadedExecutor executor;
   executor.add_node(action_client);
