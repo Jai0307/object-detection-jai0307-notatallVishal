@@ -27,7 +27,6 @@ class trackObjectClient : public rclcpp::Node
 {
 public:
   using trackObject = action_client::action::trackObject;
-  using userInput = input::
   using GoalHandleTrackObject = rclcpp_action::ClientGoalHandle<trackObject>;
 
   explicit trackObjectClient(const rclcpp::NodeOptions & node_options = rclcpp::NodeOptions())

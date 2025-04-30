@@ -34,7 +34,6 @@
           std::getline(std::cin, input);
           if (!input.empty()) {
             RCLCPP_INFO(this->get_logger(), "User typed: '%s'", input.c_str());
-            // You could publish this, call a service, etc.
 			message.data = input;
 			publisher_->publish(message);
           }
