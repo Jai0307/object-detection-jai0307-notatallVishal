@@ -1,6 +1,0 @@
-{
-  "package_name": "action_client",
-  "non_idl_tuples": [
-    "/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/action_client:action/TrackObject.action"
-  ]
-}

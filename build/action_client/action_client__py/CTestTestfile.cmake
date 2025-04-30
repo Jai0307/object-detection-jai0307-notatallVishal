@@ -1,6 +1,0 @@
-# CMake generated Testfile for 
-# Source directory: /workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/build/action_client/action_client__py
-# Build directory: /workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/build/action_client/action_client__py
-# 
-# This file includes the relevant testing commands required for 
-# testing this directory and lists subdirectories to be tested as well.

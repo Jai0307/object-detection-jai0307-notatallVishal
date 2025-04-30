@@ -55,14 +55,14 @@ class TrackObjectServer : public rclcpp::Node
  {
 public:
   using TrackObject = action_client::action::TrackObject;
-  using GoalHandleTrackObject = rclcpp_action::ClientGoalHandle<TrackObject>;
+  using GoalHandleDetect = rclcpp_action::ClientGoalHandle<Detect>;
 
   explicit TrackObjectServer(const rclcpp::NodeOptions & options = rclcpp::NodeOptions())
   : Node("track_object_server", options)
   {
     using namespace std::placeholders;
 
-    this->action_server_ = rclcpp_action::create_server<TrackObject>(
+    this->action_server_ = rclcpp_action::create_server<Detect>(
       this,
       "move_robot",
       std::bind(&TrackObjectServer::handle_goal, this, _1, _2),
@@ -173,7 +173,7 @@ private:
   
   rclcpp_action::GoalResponse handle_goal(
     const rclcpp_action::GoalUUID & uuid,
-    std::shared_ptr<const TrackObject::Goal> goal)
+    std::shared_ptr<const Detect::Goal> goal)
   {
 	
 	if(COCO_ObjSet.find(goal->object_name) == COCO_ObjSet.end()) {
@@ -188,14 +188,14 @@ private:
   }
 
   rclcpp_action::CancelResponse handle_cancel(
-    const std::shared_ptr<GoalHandleTrackObject> goal_handle)
+    const std::shared_ptr<GoalHandleDetect> goal_handle)
   {
     RCLCPP_INFO(this->get_logger(), "Received request to cancel goal.");
     (void)goal_handle;
     return rclcpp_action::CancelResponse::ACCEPT;
   }
 
-  void handle_accepted(const std::shared_ptr<GoalHandleTrackObject> goal_handle)
+  void handle_accepted(const std::shared_ptr<GoalHandleDetect> goal_handle)
   {
     using namespace std::placeholders;
     // this needs to return quickly to avoid blocking the executor, so spin up a new thread
@@ -204,14 +204,14 @@ private:
 
   void 
 
-  void execute(const std::shared_ptr<GoalHandleTrackObject> goal_handle)
+  void execute(const std::shared_ptr<GoalHandleDetect> goal_handle)
   {
     RCLCPP_INFO(this->get_logger(), "[LOG] Executing goal");
     const auto goal = goal_handle->get_goal();
-    auto feedback = std::make_shared<TrackObject::Feedback>();
+    auto feedback = std::make_shared<Detect::Feedback>();
     auto & message = feedback->feedback;
     message = "Starting movement...";
-    auto result = std::make_shared<TrackObject::Result>();
+    auto result = std::make_shared<Detect::Result>();
     auto move = geometry_msgs::msg::Twist();
 	    
 	rclcpp::Rate loop_rate(50);
