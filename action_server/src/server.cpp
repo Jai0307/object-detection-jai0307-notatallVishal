@@ -43,11 +43,12 @@ Action Server Specs
 #include "std_msgs/msg/bool.hpp"
 #include "sensor_msgs/msg/laser_scan.hpp"
 
+#define SCREENWIDTH 360
 
 enum trackingState_t = { /*States to determine movement */
 	T_WAIT,
-	T_SEARCH,
-	T_TRACK, /* */
+	T_LOOK,
+	T_MOVE, /* */
 	T_STOP /* Complete State */
 	};
 
@@ -143,6 +144,9 @@ private:
   std::string reqObjectName;
   vision_msgs::msg::Detection2D reqObject;
   bool objFound;
+  
+  /* depth Stored variables */
+  float avgDepth_BB; 
 
   rclcpp_action::Server<Move>::SharedPtr action_server_;
   rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr publisher_;
@@ -165,6 +169,11 @@ private:
 	  }
 	  
 	  return;
+  }
+  
+  /* left is negative */
+  float deltaXfromCenter(float centerX) {
+	  return SCREENWIDTH/2 - centerX;
   }
   
   void depth_callback(const /* whatever the type is */ msg) {
@@ -216,7 +225,24 @@ private:
 	    
 	rclcpp::Rate loop_rate(50);
 	
+	trackingState_t currState, nextState;
+	
+	
 	while(1) {
+		
+		switch (currState) {
+			case T_WAIT:
+				nextState = objFound ? T_LOOK : T_WAIT;
+				break;
+			case T_LOOK:
+				/* rotate based on the location */
+				break; 
+			case T_MOVE:
+				/* move forward */
+				move.
+				break;
+			case T_STOP:
+		}
 		
 		loop_rate.sleep();
 	}
