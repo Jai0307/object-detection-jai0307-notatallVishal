@@ -10,6 +10,22 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 
+add_executable(input_node src/input.cpp)
+ament_target_dependencies(input_node rclcpp std_msgs)
+
+install(TARGETS
+   input_node
+   DESTINATION lib/${PROJECT_NAME}
+ )
+
+
+# Install launch files
+install(DIRECTORY
+  launch
+  DESTINATION share/${PROJECT_NAME}/
+)
+
+
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   # the following line skips the linter which checks for copyrights
