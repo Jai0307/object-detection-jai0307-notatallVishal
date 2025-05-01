@@ -22,26 +22,30 @@ Action Client Specs
 #include "custom_interfaces/action/detect.hpp"
 #include "rclcpp/rclcpp.hpp"
 #include "rclcpp_action/rclcpp_action.hpp"
+#include "std_msgs/msg/string.hpp"
 
 class TrackObjectClient : public rclcpp::Node
 {
 public:
+
   using Detect = custom_interfaces::action::Detect;
   using GoalHandleDetect = rclcpp_action::ClientGoalHandle<Detect>;
 
   explicit TrackObjectClient(const rclcpp::NodeOptions & node_options = rclcpp::NodeOptions())
-  : Node("track_object_client", node_options), goal_done_(false)
+  : Node("action_client", node_options), goal_done_(false)
   {
+    using namespace std::placeholders;
+
     this->client_ptr_ = rclcpp_action::create_client<Detect>(
       this->get_node_base_interface(),
       this->get_node_graph_interface(),
       this->get_node_logging_interface(),
       this->get_node_waitables_interface(),
-      "track_object_client");
+      "action_client");
 
 
-	subscription_ = this->create_subscription<std_msgs::msgs::String>("input_topic", 10, 
-					std::bind(&TrackObjectClient::input_callback, this, _1);
+	subscription_ = this->create_subscription<std_msgs::msg::String>("input_topic", 10, 
+					std::bind(&TrackObjectClient::input_callback, this, _1));
 					
     this->timer_ = this->create_wall_timer(
       std::chrono::milliseconds(500),
@@ -73,10 +77,8 @@ public:
 
     auto goal_msg = Detect::Goal();
 	
+    goal_msg.object_name = objectName;
 
-    goal_msg.time_goal = 5;
-    goal_msg.move_goal_lin_x = 0.3;
-    goal_msg.move_goal_ang_z = 0.2;
 
     RCLCPP_INFO(this->get_logger(), "Sending goal");
 

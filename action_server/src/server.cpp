@@ -31,21 +31,78 @@ Action Server Specs
 #include <memory>
 #include <thread>
 #include <cmath>
+#include <inttypes.h>
 
 #include "rclcpp/rclcpp.hpp"
 #include "rclcpp_action/rclcpp_action.hpp"
 #include <vision_msgs/msg/detection2_d_array.hpp>
 #include <vision_msgs/msg/detection2_d.hpp>
 #include <vision_msgs/msg/object_hypothesis_with_pose.hpp>
-#include "action_client/action/TrackObject.hpp"
+#include "custom_interfaces/action/detect.hpp"
 #include "geometry_msgs/msg/twist.hpp"
 #include "nav_msgs/msg/odometry.hpp"
 #include "std_msgs/msg/bool.hpp"
-#include "sensor_msgs/msg/laser_scan.hpp"
+#include "sensor_msgs/msg/image.hpp"
 
-#define SCREENWIDTH 360
+#define SCREENWIDTH 640
+#define SCREENHEIGHT 480
 
-enum trackingState_t = { /*States to determine movement */
+static const std::set<std::string> COCO_ObjSet = {
+	"person", "bicycle", "car", "motorcycle", "airplane", "bus", "train", "truck", "boat", "traffic light",
+	"fire hydrant", "stop sign", "parking meter", "bench", "bird", "cat", "dog", "horse", "sheep", "cow",
+	"elephant", "bear", "zebra", "giraffe", "backpack", "umbrella", "handbag", "tie", "suitcase", "frisbee",
+	"skis", "snowboard", "sports ball", "kite", "baseball bat", "baseball glove", "skateboard", "surfboard",
+	"tennis racket", "bottle", "wine glass", "cup", "fork", "knife", "spoon", "bowl", "banana", "apple",
+	"sandwich", "orange", "broccoli", "carrot", "hot dog", "pizza", "donut", "cake", "chair", "couch",
+	"potted plant", "bed", "dining table", "toilet", "TV", "laptop", "mouse", "remote", "keyboard", "cell phone",
+	"microwave", "oven", "toaster", "sink", "refrigerator", "book", "clock", "vase", "scissors", "teddy bear",
+	"hair drier", "toothbrush"
+};
+
+static const std::map<int, std::string> CocoLabelMap = {
+  {  0, "person"         }, {  1, "bicycle"        },
+  {  2, "car"            }, {  3, "motorcycle"    },
+  {  4, "airplane"       }, {  5, "bus"            },
+  {  6, "train"          }, {  7, "truck"          },
+  {  8, "boat"           }, {  9, "traffic light"  },
+  { 10, "fire hydrant"   }, { 11, "stop sign"      },
+  { 12, "parking meter"  }, { 13, "bench"          },
+  { 14, "bird"           }, { 15, "cat"            },
+  { 16, "dog"            }, { 17, "horse"          },
+  { 18, "sheep"          }, { 19, "cow"            },
+  { 20, "elephant"       }, { 21, "bear"           },
+  { 22, "zebra"          }, { 23, "giraffe"        },
+  { 24, "backpack"       }, { 25, "umbrella"       },
+  { 26, "handbag"        }, { 27, "tie"            },
+  { 28, "suitcase"       }, { 29, "frisbee"        },
+  { 30, "skis"           }, { 31, "snowboard"      },
+  { 32, "sports ball"    }, { 33, "kite"           },
+  { 34, "baseball bat"   }, { 35, "baseball glove" },
+  { 36, "skateboard"     }, { 37, "surfboard"      },
+  { 38, "tennis racket"  }, { 39, "bottle"         },
+  { 40, "wine glass"     }, { 41, "cup"            },
+  { 42, "fork"           }, { 43, "knife"          },
+  { 44, "spoon"          }, { 45, "bowl"           },
+  { 46, "banana"         }, { 47, "apple"          },
+  { 48, "sandwich"       }, { 49, "orange"         },
+  { 50, "broccoli"       }, { 51, "carrot"         },
+  { 52, "hot dog"        }, { 53, "pizza"          },
+  { 54, "donut"          }, { 55, "cake"           },
+  { 56, "chair"          }, { 57, "couch"          },
+  { 58, "potted plant"   }, { 59, "bed"            },
+  { 60, "dining table"   }, { 61, "toilet"         },
+  { 62, "tv"             }, { 63, "laptop"         },
+  { 64, "mouse"          }, { 65, "remote"         },
+  { 66, "keyboard"       }, { 67, "cell phone"     },
+  { 68, "microwave"      }, { 69, "oven"           },
+  { 70, "toaster"        }, { 71, "sink"           },
+  { 72, "refrigerator"   }, { 73, "book"           },
+  { 74, "clock"          }, { 75, "vase"           },
+  { 76, "scissors"       }, { 77, "teddy bear"     },
+  { 78, "hair drier"     }, { 79, "toothbrush"     }
+};
+
+enum trackingState_t { /*States to determine movement */
 	T_WAIT,
 	T_LOOK,
 	T_MOVE, /* */
@@ -55,7 +112,7 @@ enum trackingState_t = { /*States to determine movement */
 class TrackObjectServer : public rclcpp::Node
  {
 public:
-  using TrackObject = action_client::action::TrackObject;
+  using Detect = custom_interfaces::action::Detect;
   using GoalHandleDetect = rclcpp_action::ClientGoalHandle<Detect>;
 
   explicit TrackObjectServer(const rclcpp::NodeOptions & options = rclcpp::NodeOptions())
@@ -65,7 +122,7 @@ public:
 
     this->action_server_ = rclcpp_action::create_server<Detect>(
       this,
-      "move_robot",
+      "track_object_server",
       std::bind(&TrackObjectServer::handle_goal, this, _1, _2),
       std::bind(&TrackObjectServer::handle_cancel, this, _1),
       std::bind(&TrackObjectServer::handle_accepted, this, _1));
@@ -74,70 +131,17 @@ public:
 	
 	/* Subscribe to detections_output and depth */
 	
-	cameraSubscription_ = this->create_subscription<vision_msgs::msgs::Detection2DArray>(
-		"/detections_output", 10, std::bind(&TrackObjectServer::camera_callback), this, _1);
+	cameraSubscription_ = this->create_subscription<vision_msgs::msg::Detection2DArray>(
+		"/detections_output", 10, std::bind(&TrackObjectServer::camera_callback, this, _1));
 	
 	
-	depthSubscription_ = this->create_subscription<:: ::>(
-        "/dep_dist", 10, std::bind(&TrackObjectServer::depth_callback, this, _1));
+	depthSubscription_ = this->create_subscription<sensor_msgs::msg::Image>(
+        "/depth", 10, std::bind(&TrackObjectServer::depth_callback, this, _1));
 
   }
 
 private:
-  static const std::set<std::string> COCO_ObjSet = {
-        "person", "bicycle", "car", "motorcycle", "airplane", "bus", "train", "truck", "boat", "traffic light",
-        "fire hydrant", "stop sign", "parking meter", "bench", "bird", "cat", "dog", "horse", "sheep", "cow",
-        "elephant", "bear", "zebra", "giraffe", "backpack", "umbrella", "handbag", "tie", "suitcase", "frisbee",
-        "skis", "snowboard", "sports ball", "kite", "baseball bat", "baseball glove", "skateboard", "surfboard",
-        "tennis racket", "bottle", "wine glass", "cup", "fork", "knife", "spoon", "bowl", "banana", "apple",
-        "sandwich", "orange", "broccoli", "carrot", "hot dog", "pizza", "donut", "cake", "chair", "couch",
-        "potted plant", "bed", "dining table", "toilet", "TV", "laptop", "mouse", "remote", "keyboard", "cell phone",
-        "microwave", "oven", "toaster", "sink", "refrigerator", "book", "clock", "vase", "scissors", "teddy bear",
-        "hair drier", "toothbrush"
-    };
-	
-  static const std::map<int, std::string> CocoLabelMap = {
-	  {  0, "person"         }, {  1, "bicycle"        },
-	  {  2, "car"            }, {  3, "motorcycle"    },
-	  {  4, "airplane"       }, {  5, "bus"            },
-	  {  6, "train"          }, {  7, "truck"          },
-	  {  8, "boat"           }, {  9, "traffic light"  },
-	  { 10, "fire hydrant"   }, { 11, "stop sign"      },
-	  { 12, "parking meter"  }, { 13, "bench"          },
-	  { 14, "bird"           }, { 15, "cat"            },
-	  { 16, "dog"            }, { 17, "horse"          },
-	  { 18, "sheep"          }, { 19, "cow"            },
-	  { 20, "elephant"       }, { 21, "bear"           },
-	  { 22, "zebra"          }, { 23, "giraffe"        },
-	  { 24, "backpack"       }, { 25, "umbrella"       },
-	  { 26, "handbag"        }, { 27, "tie"            },
-	  { 28, "suitcase"       }, { 29, "frisbee"        },
-	  { 30, "skis"           }, { 31, "snowboard"      },
-	  { 32, "sports ball"    }, { 33, "kite"           },
-	  { 34, "baseball bat"   }, { 35, "baseball glove" },
-	  { 36, "skateboard"     }, { 37, "surfboard"      },
-	  { 38, "tennis racket"  }, { 39, "bottle"         },
-	  { 40, "wine glass"     }, { 41, "cup"            },
-	  { 42, "fork"           }, { 43, "knife"          },
-	  { 44, "spoon"          }, { 45, "bowl"           },
-	  { 46, "banana"         }, { 47, "apple"          },
-	  { 48, "sandwich"       }, { 49, "orange"         },
-	  { 50, "broccoli"       }, { 51, "carrot"         },
-	  { 52, "hot dog"        }, { 53, "pizza"          },
-	  { 54, "donut"          }, { 55, "cake"           },
-	  { 56, "chair"          }, { 57, "couch"          },
-	  { 58, "potted plant"   }, { 59, "bed"            },
-	  { 60, "dining table"   }, { 61, "toilet"         },
-	  { 62, "tv"             }, { 63, "laptop"         },
-	  { 64, "mouse"          }, { 65, "remote"         },
-	  { 66, "keyboard"       }, { 67, "cell phone"     },
-	  { 68, "microwave"      }, { 69, "oven"           },
-	  { 70, "toaster"        }, { 71, "sink"           },
-	  { 72, "refrigerator"   }, { 73, "book"           },
-	  { 74, "clock"          }, { 75, "vase"           },
-	  { 76, "scissors"       }, { 77, "teddy bear"     },
-	  { 78, "hair drier"     }, { 79, "toothbrush"     }
-	};
+  
 
 
   /* Camera Stored variables */
@@ -145,17 +149,26 @@ private:
   vision_msgs::msg::Detection2D reqObject;
   float objX;
   float objY;
+  float sizeX;
+  float sizeY;
+
   bool objFound;
   bool headOn;
   /* depth Stored variables */
   float avgDepth_BB; 
 
-  rclcpp_action::Server<Move>::SharedPtr action_server_;
+  rclcpp_action::Server<Detect>::SharedPtr action_server_;
   rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr publisher_;
-  rclcpp::Subscription<vision_msgs::msgs::Detection2DArray>::SharedPtr cameraSubscription_;
+  rclcpp::Subscription<vision_msgs::msg::Detection2DArray>::SharedPtr cameraSubscription_;
+  rclcpp::Subscription<sensor_msgs::msg::Image>::SharedPtr depthSubscription_;
 
 
-  void camera_callback(const vision_msgs::msgs::Detection2DArray::SharedPtr msg) {
+  /* left is negative */
+  float deltaXfromCenter(float centerX) {
+	  return SCREENWIDTH/2 - centerX;
+  }
+
+  void camera_callback(const vision_msgs::msg::Detection2DArray::SharedPtr msg) {
 	  objFound = false; 
 	  objX = -1;
 	  objY = -1;
@@ -170,6 +183,9 @@ private:
 				auto bbox = detection.bbox;
 				objX = bbox.center.position.x;
 				objY = bbox.center.position.y;
+				sizeX = bbox.size_x;
+				sizeY = bbox.size_y;
+
 				headOn = std::abs(deltaXfromCenter(objX))/SCREENWIDTH < 0.1;
                 return;  // Exit loop once found
             }
@@ -180,12 +196,26 @@ private:
 	  return;
   }
   
-  /* left is negative */
-  float deltaXfromCenter(float centerX) {
-	  return SCREENWIDTH/2 - centerX;
+
+  uint8_t findAvgDepthBBOX(float size_x, float size_y, float objX, float objY, uint8_t depthData[]) {
+	float avg = 0.0f;
+
+	int start, end;
+	start = objX - size_x/2 + SCREENWIDTH * (objY - size_y/2);
+	end = objX + size_x/2 + SCREENWIDTH * (objY + size_y/2);
+
+	for(int i = start; i < end; i++) avg += depthData[i];
+
+	avg /= (end-start);
+
+	return avg;
   }
+
   
-  void depth_callback(const /* whatever the type is */ msg) {
+  void depth_callback(const sensor_msgs::msg::Image::SharedPtr msg) {
+	  uint8_t data[] = msg->data;
+
+	  avgDepth_BB = findAvgDepthBBOX(sizeX, sizeY, objX, objY, data);
 	  return;
   }
   
@@ -276,10 +306,12 @@ private:
 	
 	trackingState_t currState, nextState;
 	
-	int rfd = open_robot_port()
-	
-	while(1) {
+	int rfd = open_robot_port();
+	bool complete = false;
+
+	while(~complete) {
 		
+		/* State Transition Logic & Output Logic */
 		switch (currState) {
 			case T_WAIT:
 				nextState = objFound ? T_LOOK : T_WAIT;
@@ -292,14 +324,20 @@ private:
 				break; 
 			case T_MOVE:
 				/* move forward */
-				move_forward(rfd);
+				if(avgDepth_BB) move_forward(rfd);
 				if(!headOn) nextState = T_LOOK;
+
+				if((avgDepth_BB < 0.7f) && headOn) nextState = T_STOP;
 				break;
 			case T_STOP:
 				stop_robot(rfd);
+				complete = true;
 				break;
 		}
-		
+
+		/* Updating Client with Feedback */
+		goal_handle->publish_feedback(feedback);
+
 		loop_rate.sleep();
 	}
 		
@@ -353,7 +391,7 @@ private:
   }
 
   void get_depth(){
-	
+
   }
 };  // class TrackObjectServer
 
