@@ -1,0 +1,114 @@
+[01m[K/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/action_client/src/action_client.cpp:99:24:[m[K [01;31m[Kerror: [m[K‘[01m[Kstd_msgs[m[K’ was not declared in this scope
+   99 |   rclcpp::Subscription<[01;31m[Kstd_msgs[m[K::msg::String>::SharedPtr subscription_;
+      |                        [01;31m[K^~~~~~~~[m[K
+[01m[K/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/action_client/src/action_client.cpp:99:45:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+   99 |   rclcpp::Subscription<std_msgs::msg::String[01;31m[K>[m[K::SharedPtr subscription_;
+      |                                             [01;31m[K^[m[K
+[01m[K/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/action_client/src/action_client.cpp:99:45:[m[K [01;31m[Kerror: [m[Ktemplate argument 3 is invalid
+[01m[K/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/action_client/src/action_client.cpp:99:45:[m[K [01;31m[Kerror: [m[Ktemplate argument 4 is invalid
+[01m[K/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/action_client/src/action_client.cpp:99:45:[m[K [01;31m[Kerror: [m[Ktemplate argument 5 is invalid
+[01m[K/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/action_client/src/action_client.cpp:99:48:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K;[m[K’ at end of member declaration
+   99 |   rclcpp::Subscription<std_msgs::msg::String>::[01;31m[KSharedPtr[m[K subscription_;
+      |                                                [01;31m[K^~~~~~~~~[m[K
+      |                                                         [32m[K;[m[K
+[01m[K/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/action_client/src/action_client.cpp:99:58:[m[K [01;31m[Kerror: [m[K‘[01m[Ksubscription_[m[K’ does not name a type; did you mean ‘[01m[Krmw_subscription_t[m[K’?
+   99 |   rclcpp::Subscription<std_msgs::msg::String>::SharedPtr [01;31m[Ksubscription_[m[K;
+      |                                                          [01;31m[K^~~~~~~~~~~~~[m[K
+      |                                                          [32m[Krmw_subscription_t[m[K
+[01m[K/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/action_client/src/action_client.cpp:104:29:[m[K [01;31m[Kerror: [m[K‘[01m[Kstd_msgs[m[K’ does not name a type
+  104 |   void input_callback(const [01;31m[Kstd_msgs[m[K::msg::String::SharedPtr msg) {
+      |                             [01;31m[K^~~~~~~~[m[K
+[01m[K/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/action_client/src/action_client.cpp:104:42:[m[K [01;31m[Kerror: [m[Kexpected unqualified-id before ‘[01m[K::[m[K’ token
+  104 |   void input_callback(const std_msgs::msg[01;31m[K::[m[KString::SharedPtr msg) {
+      |                                          [01;31m[K^~[m[K
+[01m[K/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/action_client/src/action_client.cpp:104:42:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K)[m[K’ before ‘[01m[K::[m[K’ token
+  104 |   void input_callback[34m[K([m[Kconst std_msgs::msg[01;31m[K:[m[K[32m[K:[m[KString::SharedPtr msg) {
+      |                      [34m[K~[m[K                   [01;31m[K^[m[K[32m[K~[m[K
+      |                                          [32m[K)[m[K
+[01m[K/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/action_client/src/action_client.cpp:104:39:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K;[m[K’ at end of member declaration
+  104 |   void input_callback(const std_msgs::[01;31m[Kmsg[m[K::String::SharedPtr msg) {
+      |                                       [01;31m[K^~~[m[K
+      |                                          [32m[K;[m[K
+[01m[K/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/action_client/src/action_client.cpp:104:44:[m[K [01;31m[Kerror: [m[K‘[01m[KString[m[K’ in namespace ‘[01m[K::[m[K’ does not name a type
+  104 |   void input_callback(const std_msgs::msg::[01;31m[KString[m[K::SharedPtr msg) {
+      |                                            [01;31m[K^~~~~~[m[K
+[01m[K/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/action_client/src/action_client.cpp:[m[K In constructor ‘[01m[KTrackObjectClient::TrackObjectClient(const rclcpp::NodeOptions&)[m[K’:
+[01m[K/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/action_client/src/action_client.cpp:43:9:[m[K [01;31m[Kerror: [m[K‘[01m[Ksubscription_[m[K’ was not declared in this scope; did you mean ‘[01m[Krmw_subscription_t[m[K’?
+   43 |         [01;31m[Ksubscription_[m[K = this->create_subscription<std_msgs::msgs::String>("input_topic", 10,
+      |         [01;31m[K^~~~~~~~~~~~~[m[K
+      |         [32m[Krmw_subscription_t[m[K
+[01m[K/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/action_client/src/action_client.cpp:43:51:[m[K [01;31m[Kerror: [m[K‘[01m[Kstd_msgs[m[K’ was not declared in this scope
+   43 |         subscription_ = this->create_subscription<[01;31m[Kstd_msgs[m[K::msgs::String>("input_topic", 10,
+      |                                                   [01;31m[K^~~~~~~~[m[K
+[01m[K/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/action_client/src/action_client.cpp:43:31:[m[K [01;31m[Kerror: [m[Kparse error in template argument list
+   43 |         subscription_ = this->[01;31m[Kcreate_subscription<std_msgs::msgs::String>[m[K("input_topic", 10,
+      |                               [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/action_client/src/action_client.cpp:44:93:[m[K [01;31m[Kerror: [m[K‘[01m[K_1[m[K’ was not declared in this scope; did you mean ‘[01m[Kstd::placeholders::_1[m[K’?
+   44 |                                         std::bind(&TrackObjectClient::input_callback, this, [01;31m[K_1[m[K);
+      |                                                                                             [01;31m[K^~[m[K
+      |                                                                                             [32m[Kstd::placeholders::_1[m[K
+In file included from [01m[K/usr/include/c++/11/pstl/glue_algorithm_defs.h:13[m[K,
+                 from [01m[K/usr/include/c++/11/algorithm:74[m[K,
+                 from [01m[K/workspaces/isaac_ros-dev/ros2_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/action/detail/detect__struct.hpp:8[m[K,
+                 from [01m[K/workspaces/isaac_ros-dev/ros2_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/action/detect.hpp:7[m[K,
+                 from [01m[K/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/action_client/src/action_client.cpp:22[m[K:
+[01m[K/usr/include/c++/11/functional:225:34:[m[K [01;36m[Knote: [m[K‘[01m[Kstd::placeholders::_1[m[K’ declared here
+  225 |     extern const _Placeholder<1> [01;36m[K_1[m[K;
+      |                                  [01;36m[K^~[m[K
+[01m[K/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/action_client/src/action_client.cpp:[m[K In member function ‘[01m[Kvoid TrackObjectClient::send_goal()[m[K’:
+[01m[K/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/action_client/src/action_client.cpp:77:14:[m[K [01;31m[Kerror: [m[K‘[01m[Kstruct custom_interfaces::action::Detect_Goal_<std::allocator<void> >[m[K’ has no member named ‘[01m[Ktime_goal[m[K’
+   77 |     goal_msg.[01;31m[Ktime_goal[m[K = 5;
+      |              [01;31m[K^~~~~~~~~[m[K
+[01m[K/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/action_client/src/action_client.cpp:78:14:[m[K [01;31m[Kerror: [m[K‘[01m[Kstruct custom_interfaces::action::Detect_Goal_<std::allocator<void> >[m[K’ has no member named ‘[01m[Kmove_goal_lin_x[m[K’
+   78 |     goal_msg.[01;31m[Kmove_goal_lin_x[m[K = 0.3;
+      |              [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/action_client/src/action_client.cpp:79:14:[m[K [01;31m[Kerror: [m[K‘[01m[Kstruct custom_interfaces::action::Detect_Goal_<std::allocator<void> >[m[K’ has no member named ‘[01m[Kmove_goal_ang_z[m[K’
+   79 |     goal_msg.[01;31m[Kmove_goal_ang_z[m[K = 0.2;
+      |              [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/action_client/src/action_client.cpp:86:18:[m[K [01;31m[Kerror: [m[K‘[01m[KMyActionClient[m[K’ has not been declared
+   86 |       std::bind(&[01;31m[KMyActionClient[m[K::goal_response_callback, this, _1);
+      |                  [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/action_client/src/action_client.cpp:89:18:[m[K [01;31m[Kerror: [m[K‘[01m[KMyActionClient[m[K’ has not been declared
+   89 |       std::bind(&[01;31m[KMyActionClient[m[K::feedback_callback, this, _1, _2);
+      |                  [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/action_client/src/action_client.cpp:92:18:[m[K [01;31m[Kerror: [m[K‘[01m[KMyActionClient[m[K’ has not been declared
+   92 |       std::bind(&[01;31m[KMyActionClient[m[K::result_callback, this, _1);
+      |                  [01;31m[K^~~~~~~~~~~~~~[m[K
+In file included from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155[m[K,
+                 from [01m[K/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/action_client/src/action_client.cpp:23[m[K:
+[01m[K/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/action_client/src/action_client.cpp:[m[K In member function ‘[01m[Kvoid TrackObjectClient::feedback_callback(rclcpp_action::ClientGoalHandle<custom_interfaces::action::Detect>::SharedPtr, std::shared_ptr<const custom_interfaces::action::Detect_Feedback_<std::allocator<void> > >)[m[K’:
+[01m[K/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/action_client/src/action_client.cpp:123:62:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing element_type = const struct custom_interfaces::action::Detect_Feedback_<std::allocator<void> >[m[K’ {aka ‘[01m[Kconst struct custom_interfaces::action::Detect_Feedback_<std::allocator<void> >[m[K’} has no member named ‘[01m[Kfeedback[m[K’
+  123 |       this->get_logger(), "Feedback received: %s", feedback->[01;31m[Kfeedback[m[K.c_str());
+      |                                                              [01;31m[K^~~~~~~~[m[K
+[01m[K/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/action_client/src/action_client.cpp:125:30:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing element_type = const struct custom_interfaces::action::Detect_Feedback_<std::allocator<void> >[m[K’ {aka ‘[01m[Kconst struct custom_interfaces::action::Detect_Feedback_<std::allocator<void> >[m[K’} has no member named ‘[01m[Kfeedback[m[K’
+  125 |          if(strcmp(feedback->[01;31m[Kfeedback[m[K.c_str(), "Terminate.")){
+      |                              [01;31m[K^~~~~~~~[m[K
+In file included from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155[m[K,
+                 from [01m[K/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/action_client/src/action_client.cpp:23[m[K:
+[01m[K/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/action_client/src/action_client.cpp:[m[K In member function ‘[01m[Kvoid TrackObjectClient::result_callback(const rclcpp_action::ClientGoalHandle<custom_interfaces::action::Detect>::WrappedResult&)[m[K’:
+[01m[K/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/action_client/src/action_client.cpp:148:75:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing element_type = struct custom_interfaces::action::Detect_Result_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct custom_interfaces::action::Detect_Result_<std::allocator<void> >[m[K’} has no member named ‘[01m[Kresult[m[K’
+  148 |     RCLCPP_INFO(this->get_logger(), "Result received: %s", result.result->[01;31m[Kresult[m[K.c_str());
+      |                                                                           [01;31m[K^~~~~~[m[K
+gmake[2]: *** [CMakeFiles/action_client_node.dir/build.make:76: CMakeFiles/action_client_node.dir/src/action_client.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/action_client_node.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

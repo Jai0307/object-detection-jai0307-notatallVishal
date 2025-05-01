@@ -1,0 +1,210 @@
+[0.000000] (-) TimerEvent: {}
+[0.001157] (-) JobUnselected: {'identifier': 'action_server'}
+[0.001536] (action_client) JobQueued: {'identifier': 'action_client', 'dependencies': OrderedDict()}
+[0.001870] (action_client) JobStarted: {'identifier': 'action_client'}
+[0.028115] (action_client) JobProgress: {'identifier': 'action_client', 'progress': 'cmake'}
+[0.031819] (action_client) JobProgress: {'identifier': 'action_client', 'progress': 'build'}
+[0.031987] (action_client) Command: {'cmd': ['/usr/bin/cmake', '--build', '/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/build/action_client', '--', '-j6', '-l6'], 'cwd': '/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/build/action_client', 'env': OrderedDict([('LIBRARY_PATH', '/usr/local/cuda/lib64/stubs'), ('PYTHONWARNINGS', 'ignore:::setuptools.command.install,ignore:::setuptools.command.easy_install,ignore:::pkg_resources,ignore:::setuptools.command.develop'), ('NV_LIBCUBLAS_VERSION', '12.6.1.4-1'), ('USER', 'autorobo'), ('NV_CUDA_NSIGHT_COMPUTE_VERSION', '12.6.11-1'), ('HOSTNAME', 'autorobo-desktop'), ('SSH_AGENT_PID', '132308'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/workspaces/isaac_ros-dev/ros2_ws/install/custom_interfaces/lib:/workspaces/isaac_ros-dev/ros2_ws/install/action_client/lib:/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/install/action_client/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib:/usr/lib/aarch64-linux-gnu/tegra/weston:/usr/lib/aarch64-linux-gnu/tegra-egl:/usr/local/cuda-12.6/targets/aarch64-linux/lib:/usr/lib/aarch64-linux-gnu/tegra:/opt/nvidia/vpi3/lib64:/usr/local/libcudss-linux-0.3.0.9_cuda12-archive/lib:/usr/local/nvidia/lib:/usr/local/nvidia/lib64:/usr/lib/aarch64-linux-gnu-host:/opt/tritonserver/lib'), ('HOME', '/home/admin'), ('OLDPWD', '/workspaces/isaac_ros-dev/ros2_ws'), ('HOST_USER_GID', '1001'), ('NV_LIBCUBLAS_DEV_VERSION', '12.6.1.4-1'), ('ROS_PYTHON_VERSION', '3'), ('NVIDIA_PVA_DEVICE', 'all'), ('NV_LIBNPP_PACKAGE', 'libnpp-12-6=12.3.1.54-1'), ('CUDA_VERSION', '12.6.11'), ('COLCON_PREFIX_PATH', '/workspaces/isaac_ros-dev/ros2_ws/install:/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/install'), ('ROS_DISTRO', 'humble'), ('NV_LIBCUBLAS_PACKAGE_NAME', 'libcublas-12-6'), ('NVIDIA_REQUIRE_CUDA', 'cuda>=12.6'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('NV_LIBCUSPARSE_VERSION', '12.5.3.3-1'), ('NVIDIA_DRIVER_CAPABILITIES', 'all'), ('NV_CUDA_LIB_VERSION', '12.6.11-1'), ('NV_NVML_DEV_VERSION', '12.6.68-1'), ('USERNAME', 'admin'), ('NV_LIBNPP_DEV_PACKAGE', 'libnpp-dev-12-6=12.3.1.54-1'), ('TERM', 'xterm'), ('ISAAC_ROS_WS', '/workspaces/isaac_ros-dev'), ('NV_CUDA_CUDART_VERSION', '12.6.68-1'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/opt/ros/humble/vcstool/scripts:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/src/tensorrt/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('NV_LIBCUBLAS_DEV_PACKAGE_NAME', 'libcublas-dev-12-6'), ('NV_LIBCUBLAS_PACKAGE', 'libcublas-12-6=12.6.1.4-1'), ('HOST_USER_UID', '1000'), ('NVARCH', 'arm64'), ('CUDSS_DIR', '/usr/local/libcudss-linux-0.3.0.9_cuda12-archive'), ('NV_LIBCUSPARSE_DEV_VERSION', '12.5.3.3-1'), ('DISPLAY', ':1'), ('NVIDIA_PRODUCT_NAME', 'CUDA'), ('LANG', 'en_US.UTF-8'), ('RMW_IMPLEMENTATION', 'rmw_fastrtps_cpp'), ('NV_CUDA_CUDART_DEV_VERSION', '12.6.68-1'), ('ROS_ROOT', '/opt/ros/humble'), ('SSH_AUTH_SOCK', '/tmp/ssh-XXXXXXmvrixz/agent.132307'), ('AMENT_PREFIX_PATH', '/workspaces/isaac_ros-dev/ros2_ws/install/custom_interfaces:/workspaces/isaac_ros-dev/ros2_ws/install/input:/workspaces/isaac_ros-dev/ros2_ws/install/action_server:/workspaces/isaac_ros-dev/ros2_ws/install/action_client:/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/install/input:/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/install/action_client:/opt/ros/humble'), ('DEBIAN_FRONTEND', 'noninteractive'), ('SHELL', '/bin/bash'), ('TRT_INCLUDE_PATH', '/usr/include/aarch64-linux-gnu'), ('NV_LIBCUBLAS_DEV_PACKAGE', 'libcublas-dev-12-6=12.6.1.4-1'), ('NV_CUDA_NSIGHT_COMPUTE_DEV_PACKAGE', 'cuda-nsight-compute-12-6=12.6.11-1'), ('NVIDIA_REQUIRE_JETPACK_HOST_MOUNTS', 'base-only'), ('NV_NVTX_VERSION', '12.6.68-1'), ('NV_LIBNPP_VERSION', '12.3.1.54-1'), ('PWD', '/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/build/action_client'), ('PYTHONPATH', '/workspaces/isaac_ros-dev/ros2_ws/install/custom_interfaces/local/lib/python3.10/dist-packages:/workspaces/isaac_ros-dev/ros2_ws/install/action_client/local/lib/python3.10/dist-packages:/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/install/action_client/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages:/opt/ros/humble/vcstool:'), ('NVIDIA_VISIBLE_DEVICES', 'void'), ('COLCON', '1'), ('NV_LIBNPP_DEV_VERSION', '12.3.1.54-1'), ('CMAKE_PREFIX_PATH', '/workspaces/isaac_ros-dev/ros2_ws/install/custom_interfaces:/workspaces/isaac_ros-dev/ros2_ws/install/input:/workspaces/isaac_ros-dev/ros2_ws/install/action_server:/workspaces/isaac_ros-dev/ros2_ws/install/action_client:/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/install/input:/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/install/action_client:/usr/local/libcudss-linux-0.3.0.9_cuda12-archive::/opt/ros/humble'), ('TRT_LIB_PATH', '/usr/lib/aarch64-linux-gnu')]), 'shell': False}
+[0.099464] (-) TimerEvent: {}
+[0.185972] (action_client) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target action_client_node\x1b[0m\n'}
+[0.199536] (-) TimerEvent: {}
+[0.233694] (action_client) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/action_client_node.dir/src/action_client.cpp.o\x1b[0m\n'}
+[0.299785] (-) TimerEvent: {}
+[0.400546] (-) TimerEvent: {}
+[0.501149] (-) TimerEvent: {}
+[0.601753] (-) TimerEvent: {}
+[0.702478] (-) TimerEvent: {}
+[0.803220] (-) TimerEvent: {}
+[0.903991] (-) TimerEvent: {}
+[1.004727] (-) TimerEvent: {}
+[1.105396] (-) TimerEvent: {}
+[1.206430] (-) TimerEvent: {}
+[1.307089] (-) TimerEvent: {}
+[1.407866] (-) TimerEvent: {}
+[1.508550] (-) TimerEvent: {}
+[1.609112] (-) TimerEvent: {}
+[1.709801] (-) TimerEvent: {}
+[1.810519] (-) TimerEvent: {}
+[1.911248] (-) TimerEvent: {}
+[2.012213] (-) TimerEvent: {}
+[2.112909] (-) TimerEvent: {}
+[2.213615] (-) TimerEvent: {}
+[2.314415] (-) TimerEvent: {}
+[2.415224] (-) TimerEvent: {}
+[2.515967] (-) TimerEvent: {}
+[2.617217] (-) TimerEvent: {}
+[2.718056] (-) TimerEvent: {}
+[2.818880] (-) TimerEvent: {}
+[2.919761] (-) TimerEvent: {}
+[3.020595] (-) TimerEvent: {}
+[3.121456] (-) TimerEvent: {}
+[3.222286] (-) TimerEvent: {}
+[3.323077] (-) TimerEvent: {}
+[3.423818] (-) TimerEvent: {}
+[3.524623] (-) TimerEvent: {}
+[3.625424] (-) TimerEvent: {}
+[3.726136] (-) TimerEvent: {}
+[3.826973] (-) TimerEvent: {}
+[3.927802] (-) TimerEvent: {}
+[4.028492] (-) TimerEvent: {}
+[4.129236] (-) TimerEvent: {}
+[4.230038] (-) TimerEvent: {}
+[4.330756] (-) TimerEvent: {}
+[4.431625] (-) TimerEvent: {}
+[4.532697] (-) TimerEvent: {}
+[4.633516] (-) TimerEvent: {}
+[4.734338] (-) TimerEvent: {}
+[4.835186] (-) TimerEvent: {}
+[4.936054] (-) TimerEvent: {}
+[5.036870] (-) TimerEvent: {}
+[5.137679] (-) TimerEvent: {}
+[5.238509] (-) TimerEvent: {}
+[5.339364] (-) TimerEvent: {}
+[5.440177] (-) TimerEvent: {}
+[5.541009] (-) TimerEvent: {}
+[5.641863] (-) TimerEvent: {}
+[5.742712] (-) TimerEvent: {}
+[5.843528] (-) TimerEvent: {}
+[5.944361] (-) TimerEvent: {}
+[6.045173] (-) TimerEvent: {}
+[6.145900] (-) TimerEvent: {}
+[6.246714] (-) TimerEvent: {}
+[6.347523] (-) TimerEvent: {}
+[6.361556] (action_client) StderrLine: {'line': b'\x1b[01m\x1b[K/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/action_client/src/action_client.cpp:99:24:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kstd_msgs\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[6.362376] (action_client) StderrLine: {'line': b'   99 |   rclcpp::Subscription<\x1b[01;31m\x1b[Kstd_msgs\x1b[m\x1b[K::msg::String>::SharedPtr subscription_;\n'}
+[6.362610] (action_client) StderrLine: {'line': b'      |                        \x1b[01;31m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[6.362786] (action_client) StderrLine: {'line': b'\x1b[01m\x1b[K/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/action_client/src/action_client.cpp:99:45:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 1 is invalid\n'}
+[6.362954] (action_client) StderrLine: {'line': b'   99 |   rclcpp::Subscription<std_msgs::msg::String\x1b[01;31m\x1b[K>\x1b[m\x1b[K::SharedPtr subscription_;\n'}
+[6.363111] (action_client) StderrLine: {'line': b'      |                                             \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[6.363261] (action_client) StderrLine: {'line': b'\x1b[01m\x1b[K/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/action_client/src/action_client.cpp:99:45:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 3 is invalid\n'}
+[6.363490] (action_client) StderrLine: {'line': b'\x1b[01m\x1b[K/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/action_client/src/action_client.cpp:99:45:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 4 is invalid\n'}
+[6.363713] (action_client) StderrLine: {'line': b'\x1b[01m\x1b[K/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/action_client/src/action_client.cpp:99:45:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 5 is invalid\n'}
+[6.363924] (action_client) StderrLine: {'line': b'\x1b[01m\x1b[K/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/action_client/src/action_client.cpp:99:48:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kexpected \xe2\x80\x98\x1b[01m\x1b[K;\x1b[m\x1b[K\xe2\x80\x99 at end of member declaration\n'}
+[6.364136] (action_client) StderrLine: {'line': b'   99 |   rclcpp::Subscription<std_msgs::msg::String>::\x1b[01;31m\x1b[KSharedPtr\x1b[m\x1b[K subscription_;\n'}
+[6.364341] (action_client) StderrLine: {'line': b'      |                                                \x1b[01;31m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[6.364544] (action_client) StderrLine: {'line': b'      |                                                         \x1b[32m\x1b[K;\x1b[m\x1b[K\n'}
+[6.367192] (action_client) StderrLine: {'line': b'\x1b[01m\x1b[K/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/action_client/src/action_client.cpp:99:58:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Ksubscription_\x1b[m\x1b[K\xe2\x80\x99 does not name a type; did you mean \xe2\x80\x98\x1b[01m\x1b[Krmw_subscription_t\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[6.367528] (action_client) StderrLine: {'line': b'   99 |   rclcpp::Subscription<std_msgs::msg::String>::SharedPtr \x1b[01;31m\x1b[Ksubscription_\x1b[m\x1b[K;\n'}
+[6.367768] (action_client) StderrLine: {'line': b'      |                                                          \x1b[01;31m\x1b[K^~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[6.367990] (action_client) StderrLine: {'line': b'      |                                                          \x1b[32m\x1b[Krmw_subscription_t\x1b[m\x1b[K\n'}
+[6.370806] (action_client) StderrLine: {'line': b'\x1b[01m\x1b[K/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/action_client/src/action_client.cpp:104:29:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kstd_msgs\x1b[m\x1b[K\xe2\x80\x99 does not name a type\n'}
+[6.371040] (action_client) StderrLine: {'line': b'  104 |   void input_callback(const \x1b[01;31m\x1b[Kstd_msgs\x1b[m\x1b[K::msg::String::SharedPtr msg) {\n'}
+[6.371340] (action_client) StderrLine: {'line': b'      |                             \x1b[01;31m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[6.371487] (action_client) StderrLine: {'line': b'\x1b[01m\x1b[K/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/action_client/src/action_client.cpp:104:42:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kexpected unqualified-id before \xe2\x80\x98\x1b[01m\x1b[K::\x1b[m\x1b[K\xe2\x80\x99 token\n'}
+[6.371640] (action_client) StderrLine: {'line': b'  104 |   void input_callback(const std_msgs::msg\x1b[01;31m\x1b[K::\x1b[m\x1b[KString::SharedPtr msg) {\n'}
+[6.371764] (action_client) StderrLine: {'line': b'      |                                          \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[6.371888] (action_client) StderrLine: {'line': b'\x1b[01m\x1b[K/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/action_client/src/action_client.cpp:104:42:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kexpected \xe2\x80\x98\x1b[01m\x1b[K)\x1b[m\x1b[K\xe2\x80\x99 before \xe2\x80\x98\x1b[01m\x1b[K::\x1b[m\x1b[K\xe2\x80\x99 token\n'}
+[6.372012] (action_client) StderrLine: {'line': b'  104 |   void input_callback\x1b[34m\x1b[K(\x1b[m\x1b[Kconst std_msgs::msg\x1b[01;31m\x1b[K:\x1b[m\x1b[K\x1b[32m\x1b[K:\x1b[m\x1b[KString::SharedPtr msg) {\n'}
+[6.372153] (action_client) StderrLine: {'line': b'      |                      \x1b[34m\x1b[K~\x1b[m\x1b[K                   \x1b[01;31m\x1b[K^\x1b[m\x1b[K\x1b[32m\x1b[K~\x1b[m\x1b[K\n'}
+[6.372277] (action_client) StderrLine: {'line': b'      |                                          \x1b[32m\x1b[K)\x1b[m\x1b[K\n'}
+[6.372397] (action_client) StderrLine: {'line': b'\x1b[01m\x1b[K/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/action_client/src/action_client.cpp:104:39:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kexpected \xe2\x80\x98\x1b[01m\x1b[K;\x1b[m\x1b[K\xe2\x80\x99 at end of member declaration\n'}
+[6.372517] (action_client) StderrLine: {'line': b'  104 |   void input_callback(const std_msgs::\x1b[01;31m\x1b[Kmsg\x1b[m\x1b[K::String::SharedPtr msg) {\n'}
+[6.372635] (action_client) StderrLine: {'line': b'      |                                       \x1b[01;31m\x1b[K^~~\x1b[m\x1b[K\n'}
+[6.372769] (action_client) StderrLine: {'line': b'      |                                          \x1b[32m\x1b[K;\x1b[m\x1b[K\n'}
+[6.376981] (action_client) StderrLine: {'line': b'\x1b[01m\x1b[K/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/action_client/src/action_client.cpp:104:44:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KString\x1b[m\x1b[K\xe2\x80\x99 in namespace \xe2\x80\x98\x1b[01m\x1b[K::\x1b[m\x1b[K\xe2\x80\x99 does not name a type\n'}
+[6.377273] (action_client) StderrLine: {'line': b'  104 |   void input_callback(const std_msgs::msg::\x1b[01;31m\x1b[KString\x1b[m\x1b[K::SharedPtr msg) {\n'}
+[6.377490] (action_client) StderrLine: {'line': b'      |                                            \x1b[01;31m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[6.399059] (action_client) StderrLine: {'line': b'\x1b[01m\x1b[K/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/action_client/src/action_client.cpp:\x1b[m\x1b[K In constructor \xe2\x80\x98\x1b[01m\x1b[KTrackObjectClient::TrackObjectClient(const rclcpp::NodeOptions&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[6.399641] (action_client) StderrLine: {'line': b'\x1b[01m\x1b[K/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/action_client/src/action_client.cpp:43:9:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Ksubscription_\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Krmw_subscription_t\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[6.399913] (action_client) StderrLine: {'line': b'   43 |         \x1b[01;31m\x1b[Ksubscription_\x1b[m\x1b[K = this->create_subscription<std_msgs::msgs::String>("input_topic", 10,\n'}
+[6.400144] (action_client) StderrLine: {'line': b'      |         \x1b[01;31m\x1b[K^~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[6.400360] (action_client) StderrLine: {'line': b'      |         \x1b[32m\x1b[Krmw_subscription_t\x1b[m\x1b[K\n'}
+[6.413741] (action_client) StderrLine: {'line': b'\x1b[01m\x1b[K/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/action_client/src/action_client.cpp:43:51:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kstd_msgs\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[6.414893] (action_client) StderrLine: {'line': b'   43 |         subscription_ = this->create_subscription<\x1b[01;31m\x1b[Kstd_msgs\x1b[m\x1b[K::msgs::String>("input_topic", 10,\n'}
+[6.415352] (action_client) StderrLine: {'line': b'      |                                                   \x1b[01;31m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[6.415634] (action_client) StderrLine: {'line': b'\x1b[01m\x1b[K/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/action_client/src/action_client.cpp:43:31:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kparse error in template argument list\n'}
+[6.415884] (action_client) StderrLine: {'line': b'   43 |         subscription_ = this->\x1b[01;31m\x1b[Kcreate_subscription<std_msgs::msgs::String>\x1b[m\x1b[K("input_topic", 10,\n'}
+[6.416114] (action_client) StderrLine: {'line': b'      |                               \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[6.416444] (action_client) StderrLine: {'line': b'\x1b[01m\x1b[K/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/action_client/src/action_client.cpp:44:93:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[K_1\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Kstd::placeholders::_1\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[6.416610] (action_client) StderrLine: {'line': b'   44 |                                         std::bind(&TrackObjectClient::input_callback, this, \x1b[01;31m\x1b[K_1\x1b[m\x1b[K);\n'}
+[6.416751] (action_client) StderrLine: {'line': b'      |                                                                                             \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[6.416879] (action_client) StderrLine: {'line': b'      |                                                                                             \x1b[32m\x1b[Kstd::placeholders::_1\x1b[m\x1b[K\n'}
+[6.417002] (action_client) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/c++/11/pstl/glue_algorithm_defs.h:13\x1b[m\x1b[K,\n'}
+[6.417123] (action_client) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/c++/11/algorithm:74\x1b[m\x1b[K,\n'}
+[6.417243] (action_client) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/workspaces/isaac_ros-dev/ros2_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/action/detail/detect__struct.hpp:8\x1b[m\x1b[K,\n'}
+[6.417365] (action_client) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/workspaces/isaac_ros-dev/ros2_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/action/detect.hpp:7\x1b[m\x1b[K,\n'}
+[6.417485] (action_client) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/action_client/src/action_client.cpp:22\x1b[m\x1b[K:\n'}
+[6.417626] (action_client) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/11/functional:225:34:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kstd::placeholders::_1\x1b[m\x1b[K\xe2\x80\x99 declared here\n'}
+[6.417751] (action_client) StderrLine: {'line': b'  225 |     extern const _Placeholder<1> \x1b[01;36m\x1b[K_1\x1b[m\x1b[K;\n'}
+[6.417868] (action_client) StderrLine: {'line': b'      |                                  \x1b[01;36m\x1b[K^~\x1b[m\x1b[K\n'}
+[6.443801] (action_client) StderrLine: {'line': b'\x1b[01m\x1b[K/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/action_client/src/action_client.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid TrackObjectClient::send_goal()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[6.444230] (action_client) StderrLine: {'line': b'\x1b[01m\x1b[K/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/action_client/src/action_client.cpp:77:14:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kstruct custom_interfaces::action::Detect_Goal_<std::allocator<void> >\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Ktime_goal\x1b[m\x1b[K\xe2\x80\x99\n'}
+[6.444515] (action_client) StderrLine: {'line': b'   77 |     goal_msg.\x1b[01;31m\x1b[Ktime_goal\x1b[m\x1b[K = 5;\n'}
+[6.444762] (action_client) StderrLine: {'line': b'      |              \x1b[01;31m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[6.444977] (action_client) StderrLine: {'line': b'\x1b[01m\x1b[K/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/action_client/src/action_client.cpp:78:14:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kstruct custom_interfaces::action::Detect_Goal_<std::allocator<void> >\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kmove_goal_lin_x\x1b[m\x1b[K\xe2\x80\x99\n'}
+[6.445223] (action_client) StderrLine: {'line': b'   78 |     goal_msg.\x1b[01;31m\x1b[Kmove_goal_lin_x\x1b[m\x1b[K = 0.3;\n'}
+[6.445432] (action_client) StderrLine: {'line': b'      |              \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[6.445636] (action_client) StderrLine: {'line': b'\x1b[01m\x1b[K/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/action_client/src/action_client.cpp:79:14:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kstruct custom_interfaces::action::Detect_Goal_<std::allocator<void> >\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kmove_goal_ang_z\x1b[m\x1b[K\xe2\x80\x99\n'}
+[6.445850] (action_client) StderrLine: {'line': b'   79 |     goal_msg.\x1b[01;31m\x1b[Kmove_goal_ang_z\x1b[m\x1b[K = 0.2;\n'}
+[6.446053] (action_client) StderrLine: {'line': b'      |              \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[6.447585] (-) TimerEvent: {}
+[6.448562] (action_client) StderrLine: {'line': b'\x1b[01m\x1b[K/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/action_client/src/action_client.cpp:86:18:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KMyActionClient\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[6.449022] (action_client) StderrLine: {'line': b'   86 |       std::bind(&\x1b[01;31m\x1b[KMyActionClient\x1b[m\x1b[K::goal_response_callback, this, _1);\n'}
+[6.449264] (action_client) StderrLine: {'line': b'      |                  \x1b[01;31m\x1b[K^~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[6.449486] (action_client) StderrLine: {'line': b'\x1b[01m\x1b[K/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/action_client/src/action_client.cpp:89:18:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KMyActionClient\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[6.449704] (action_client) StderrLine: {'line': b'   89 |       std::bind(&\x1b[01;31m\x1b[KMyActionClient\x1b[m\x1b[K::feedback_callback, this, _1, _2);\n'}
+[6.449911] (action_client) StderrLine: {'line': b'      |                  \x1b[01;31m\x1b[K^~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[6.450115] (action_client) StderrLine: {'line': b'\x1b[01m\x1b[K/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/action_client/src/action_client.cpp:92:18:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KMyActionClient\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[6.450323] (action_client) StderrLine: {'line': b'   92 |       std::bind(&\x1b[01;31m\x1b[KMyActionClient\x1b[m\x1b[K::result_callback, this, _1);\n'}
+[6.450526] (action_client) StderrLine: {'line': b'      |                  \x1b[01;31m\x1b[K^~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[6.464657] (action_client) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24\x1b[m\x1b[K,\n'}
+[6.464971] (action_client) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40\x1b[m\x1b[K,\n'}
+[6.465116] (action_client) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24\x1b[m\x1b[K,\n'}
+[6.465247] (action_client) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20\x1b[m\x1b[K,\n'}
+[6.465404] (action_client) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25\x1b[m\x1b[K,\n'}
+[6.465524] (action_client) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18\x1b[m\x1b[K,\n'}
+[6.465645] (action_client) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20\x1b[m\x1b[K,\n'}
+[6.465765] (action_client) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37\x1b[m\x1b[K,\n'}
+[6.465887] (action_client) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25\x1b[m\x1b[K,\n'}
+[6.466008] (action_client) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21\x1b[m\x1b[K,\n'}
+[6.466127] (action_client) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155\x1b[m\x1b[K,\n'}
+[6.466261] (action_client) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/action_client/src/action_client.cpp:23\x1b[m\x1b[K:\n'}
+[6.466386] (action_client) StderrLine: {'line': b'\x1b[01m\x1b[K/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/action_client/src/action_client.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid TrackObjectClient::feedback_callback(rclcpp_action::ClientGoalHandle<custom_interfaces::action::Detect>::SharedPtr, std::shared_ptr<const custom_interfaces::action::Detect_Feedback_<std::allocator<void> > >)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[6.466535] (action_client) StderrLine: {'line': b'\x1b[01m\x1b[K/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/action_client/src/action_client.cpp:123:62:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kusing element_type = const struct custom_interfaces::action::Detect_Feedback_<std::allocator<void> >\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Kconst struct custom_interfaces::action::Detect_Feedback_<std::allocator<void> >\x1b[m\x1b[K\xe2\x80\x99} has no member named \xe2\x80\x98\x1b[01m\x1b[Kfeedback\x1b[m\x1b[K\xe2\x80\x99\n'}
+[6.466665] (action_client) StderrLine: {'line': b'  123 |       this->get_logger(), "Feedback received: %s", feedback->\x1b[01;31m\x1b[Kfeedback\x1b[m\x1b[K.c_str());\n'}
+[6.466814] (action_client) StderrLine: {'line': b'      |                                                              \x1b[01;31m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[6.466935] (action_client) StderrLine: {'line': b'\x1b[01m\x1b[K/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/action_client/src/action_client.cpp:125:30:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kusing element_type = const struct custom_interfaces::action::Detect_Feedback_<std::allocator<void> >\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Kconst struct custom_interfaces::action::Detect_Feedback_<std::allocator<void> >\x1b[m\x1b[K\xe2\x80\x99} has no member named \xe2\x80\x98\x1b[01m\x1b[Kfeedback\x1b[m\x1b[K\xe2\x80\x99\n'}
+[6.467085] (action_client) StderrLine: {'line': b'  125 |          if(strcmp(feedback->\x1b[01;31m\x1b[Kfeedback\x1b[m\x1b[K.c_str(), "Terminate.")){\n'}
+[6.467208] (action_client) StderrLine: {'line': b'      |                              \x1b[01;31m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[6.481691] (action_client) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24\x1b[m\x1b[K,\n'}
+[6.481969] (action_client) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40\x1b[m\x1b[K,\n'}
+[6.482133] (action_client) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24\x1b[m\x1b[K,\n'}
+[6.482308] (action_client) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20\x1b[m\x1b[K,\n'}
+[6.482443] (action_client) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25\x1b[m\x1b[K,\n'}
+[6.482573] (action_client) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18\x1b[m\x1b[K,\n'}
+[6.482698] (action_client) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20\x1b[m\x1b[K,\n'}
+[6.482821] (action_client) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37\x1b[m\x1b[K,\n'}
+[6.482942] (action_client) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25\x1b[m\x1b[K,\n'}
+[6.483065] (action_client) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21\x1b[m\x1b[K,\n'}
+[6.483184] (action_client) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155\x1b[m\x1b[K,\n'}
+[6.483304] (action_client) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/action_client/src/action_client.cpp:23\x1b[m\x1b[K:\n'}
+[6.483522] (action_client) StderrLine: {'line': b'\x1b[01m\x1b[K/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/action_client/src/action_client.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid TrackObjectClient::result_callback(const rclcpp_action::ClientGoalHandle<custom_interfaces::action::Detect>::WrappedResult&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[6.483745] (action_client) StderrLine: {'line': b'\x1b[01m\x1b[K/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/action_client/src/action_client.cpp:148:75:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kusing element_type = struct custom_interfaces::action::Detect_Result_<std::allocator<void> >\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Kstruct custom_interfaces::action::Detect_Result_<std::allocator<void> >\x1b[m\x1b[K\xe2\x80\x99} has no member named \xe2\x80\x98\x1b[01m\x1b[Kresult\x1b[m\x1b[K\xe2\x80\x99\n'}
+[6.483972] (action_client) StderrLine: {'line': b'  148 |     RCLCPP_INFO(this->get_logger(), "Result received: %s", result.result->\x1b[01;31m\x1b[Kresult\x1b[m\x1b[K.c_str());\n'}
+[6.484184] (action_client) StderrLine: {'line': b'      |                                                                           \x1b[01;31m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[6.547801] (-) TimerEvent: {}
+[6.648575] (-) TimerEvent: {}
+[6.749370] (-) TimerEvent: {}
+[6.850192] (-) TimerEvent: {}
+[6.950987] (-) TimerEvent: {}
+[7.051761] (-) TimerEvent: {}
+[7.152574] (-) TimerEvent: {}
+[7.253385] (-) TimerEvent: {}
+[7.354160] (-) TimerEvent: {}
+[7.454970] (-) TimerEvent: {}
+[7.555799] (-) TimerEvent: {}
+[7.656543] (-) TimerEvent: {}
+[7.757342] (-) TimerEvent: {}
+[7.858584] (-) TimerEvent: {}
+[7.959426] (-) TimerEvent: {}
+[8.060464] (-) TimerEvent: {}
+[8.161305] (-) TimerEvent: {}
+[8.262208] (-) TimerEvent: {}
+[8.363015] (-) TimerEvent: {}
+[8.430915] (action_client) StderrLine: {'line': b'gmake[2]: *** [CMakeFiles/action_client_node.dir/build.make:76: CMakeFiles/action_client_node.dir/src/action_client.cpp.o] Error 1\n'}
+[8.431624] (action_client) StderrLine: {'line': b'gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/action_client_node.dir/all] Error 2\n'}
+[8.432098] (action_client) StderrLine: {'line': b'gmake: *** [Makefile:146: all] Error 2\n'}
+[8.441647] (action_client) CommandEnded: {'returncode': 2}
+[8.463326] (-) TimerEvent: {}
+[8.473466] (action_client) JobEnded: {'identifier': 'action_client', 'rc': 2}
+[8.485891] (-) EventReactorShutdown: {}

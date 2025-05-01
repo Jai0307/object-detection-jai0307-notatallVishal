@@ -1,0 +1,6 @@
+{
+  "package_name": "custom_interfaces",
+  "non_idl_tuples": [
+    "/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/custom_interfaces:action/Detect.action"
+  ]
+}

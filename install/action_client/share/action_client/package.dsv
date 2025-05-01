@@ -1,0 +1,5 @@
+source;share/action_client/local_setup.bash
+source;share/action_client/local_setup.dsv
+source;share/action_client/local_setup.ps1
+source;share/action_client/local_setup.sh
+source;share/action_client/local_setup.zsh

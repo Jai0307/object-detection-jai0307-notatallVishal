@@ -143,8 +143,10 @@ private:
   /* Camera Stored variables */
   std::string reqObjectName;
   vision_msgs::msg::Detection2D reqObject;
+  float objX;
+  float objY;
   bool objFound;
-  
+  bool headOn;
   /* depth Stored variables */
   float avgDepth_BB; 
 
@@ -155,7 +157,9 @@ private:
 
   void camera_callback(const vision_msgs::msgs::Detection2DArray::SharedPtr msg) {
 	  objFound = false; 
-	  
+	  objX = -1;
+	  objY = -1;
+	  headOn = false;
 	  for(const auto &detection : msg->detections) {
 		  std::string detected_object = detection.results[0].hypothesis.class_id;
 
@@ -163,8 +167,13 @@ private:
                 RCLCPP_INFO(this->get_logger(), "Requested object '%s' found!", reqObjectName.c_str());
 				reqObject = detection;
                 objFound = true;
+				auto bbox = detection.bbox;
+				objX = bbox.center.position.x;
+				objY = bbox.center.position.y;
+				headOn = std::abs(deltaXfromCenter(objX))/SCREENWIDTH < 0.1;
                 return;  // Exit loop once found
             }
+
 
 	  }
 	  
@@ -177,7 +186,7 @@ private:
   }
   
   void depth_callback(const /* whatever the type is */ msg) {
-	  
+	  return;
   }
   
   rclcpp_action::GoalResponse handle_goal(
@@ -211,8 +220,48 @@ private:
     std::thread{std::bind(&TrackObjectServer::execute, this, _1), goal_handle}.detach();
   }
 
-  void 
+  int open_robot_port(){
+	const char* port = "/dev/ttyACM0";  // Change as needed
+    int fd = open(port, O_RDWR | O_NOCTTY);
 
+    if (fd < 0) {
+        std::cerr << "Failed to open port: " << strerror(errno) << std::endl;
+        return -1;
+    }
+
+    // Configure serial: 115200 baud
+    termios tty;
+    if (tcgetattr(fd, &tty) != 0) {
+        std::cerr << "tcgetattr error: " << strerror(errno) << std::endl;
+        close(fd);
+        return -1;
+    }
+
+    cfsetospeed(&tty, B115200);
+    cfsetispeed(&tty, B115200);
+    
+    // Configure 8N1
+    tty.c_cflag = (tty.c_cflag & ~CSIZE) | CS8;     // 8-bit chars
+    tty.c_cflag |= CREAD | CLOCAL;                  // Turn on READ and ignore modem ctrl lines
+    tty.c_cflag &= ~(PARENB | PARODD);              // No parity
+    tty.c_cflag &= ~CSTOPB;                         // 1 stop bit
+    tty.c_cflag &= ~CRTSCTS;                        // No hardware flow control
+
+    // Raw input/output mode
+    tty.c_lflag = 0;                                // No signaling chars, no echo
+    tty.c_iflag &= ~(IXON | IXOFF | IXANY);         // No software flow control
+    tty.c_oflag = 0;                                // No remapping, raw output
+
+    tty.c_cc[VMIN]  = 1;                            // Read blocks until 1 char
+    tty.c_cc[VTIME] = 1;                            // 0.1s read timeout
+
+    if (tcsetattr(fd, TCSANOW, &tty) != 0) {
+        std::cerr << "Error from tcsetattr: " << strerror(errno) << std::endl;
+        close(fd);
+        return -1;
+    }
+	return fd;
+  }
   void execute(const std::shared_ptr<GoalHandleDetect> goal_handle)
   {
     RCLCPP_INFO(this->get_logger(), "[LOG] Executing goal");
@@ -227,21 +276,28 @@ private:
 	
 	trackingState_t currState, nextState;
 	
+	int rfd = open_robot_port()
 	
 	while(1) {
 		
 		switch (currState) {
 			case T_WAIT:
 				nextState = objFound ? T_LOOK : T_WAIT;
+				stop_robot(rfd);
 				break;
 			case T_LOOK:
 				/* rotate based on the location */
+				spin_towards_obj(rfd);
+				if(headOn) nextState = T_MOVE;
 				break; 
 			case T_MOVE:
 				/* move forward */
-				move.
+				move_forward(rfd);
+				if(!headOn) nextState = T_LOOK;
 				break;
 			case T_STOP:
+				stop_robot(rfd);
+				break;
 		}
 		
 		loop_rate.sleep();
@@ -251,7 +307,52 @@ private:
       result->result = "Mission Accomplished";
       goal_handle->succeed(result);
       RCLCPP_INFO(this->get_logger(), "Goal succeeded");
+	  stop_robot(rfd)
+	  close(rfd);
     }
+	
+  }
+
+  void send_json_info_base(int fd, float x, float z){
+	std::string json = "\n";
+    ssize_t written = write(fd, json.c_str(), json.size());
+
+    // Forming a JSON string with numberic value that can be passed in as agrument.
+    json = R"({"T":13,"X":)" + std::to_string(x) + R"(,"Z":)" + std::to_string(z) + R"(})";
+    json = json + "\n";
+
+    // Send JSON string
+    written = write(fd, json.c_str(), json.size());
+
+	if (written < 0) {
+        std::cerr << "Write failed: " << strerror(errno) << std::endl;
+    } else {
+        std::cout << "JSON sent to serial port.\n";
+    }
+	return;
+  }
+  //spins towards obj based on detected object
+  void spin_towards_obj(int fd)
+  {
+	if(!objFound) return;
+	int dist = deltaXfromCenter(objX);
+	if(dist>0){send_json_info_base(.2, 2.9); return;}
+	send_json_info_base(fd, 0.2, -2.9);
+	return;
+  }
+
+  //moves robot forward default vel
+  //only call when head on
+  void move_forward(int fd)
+  {
+	send_json_info_base(fd, 0.4, 0.0);
+  }
+
+  void stop_robot(int fd){
+	send_json_info_base(fd, 0,0);
+  }
+
+  void get_depth(){
 	
   }
 };  // class TrackObjectServer

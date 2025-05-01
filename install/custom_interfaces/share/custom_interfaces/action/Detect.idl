@@ -1,0 +1,24 @@
+// generated from rosidl_adapter/resource/action.idl.em
+// with input from custom_interfaces/action/Detect.action
+// generated code does not contain a copyright notice
+
+
+module custom_interfaces {
+  module action {
+    @verbatim (language="comment", text=
+      "Goal")
+    struct Detect_Goal {
+      string object_name;
+    };
+    @verbatim (language="comment", text=
+      "Feedback")
+    struct Detect_Result {
+      string status_message;
+    };
+    @verbatim (language="comment", text=
+      "Result")
+    struct Detect_Feedback {
+      boolean success;
+    };
+  };
+};
