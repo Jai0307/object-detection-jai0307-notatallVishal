@@ -208,7 +208,7 @@ private:
   bool headOn;
   bool input_recieved = false;
   /* depth Stored variables */
-  float avgDepth_BB; 
+  uint8_t avgDepth_BB; 
 
   rclcpp_action::Server<Detect>::SharedPtr action_server_;
   rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr publisher_;
@@ -361,7 +361,7 @@ private:
     const auto goal = goal_handle->get_goal();
     auto feedback = std::make_shared<Detect::Feedback>();
     auto & message = feedback->feedback;
-    message = "Starting movement...";
+    
     auto result = std::make_shared<Detect::Result>();
     auto move = geometry_msgs::msg::Twist();
 	    
@@ -377,30 +377,34 @@ private:
 		/* State Transition Logic & Output Logic */
 		switch (currState) {
 			case T_WAIT:
+      message = "Looking for Object";
 				nextState = objFound ? T_LOOK : T_WAIT;
 				stop_robot(rfd);
 				break;
 			case T_LOOK:
 				/* rotate based on the location */
 				spin_towards_obj(rfd);
-				if(headOn) nextState = T_MOVE;
+        message = "Rotating";
+				if(headOn && (avgDepth_BB < 20) && (avgDepth_BB != 0)) nextState = T_MOVE;
 				break; 
 			case T_MOVE:
 				/* move forward */
 				if(avgDepth_BB) move_forward(rfd);
+        message = "Moving Forward";
 				if(!headOn) nextState = T_LOOK;
 
-				if((avgDepth_BB < 0.7f) && headOn) nextState = T_STOP;
+				if((avgDepth_BB != 0) && (avgDepth_BB < 53) && headOn) nextState = T_STOP;
 				break;
 			case T_STOP:
 				stop_robot(rfd);
+        message = "I am done";
 				complete = true;
 				break;
 		}
 		currState = nextState;
     RCLCPP_INFO(this->get_logger(), "Looking for %s", reqObjectName.c_str());
     RCLCPP_INFO(this->get_logger(), "currState %d | nextState %d", currState, nextState);
-    RCLCPP_INFO(this->get_logger(), "bbX : %f --- bbY: %f   depthinfo: %f", objX, objY, avgDepth_BB);
+    RCLCPP_INFO(this->get_logger(), "bbX : %f --- bbY: %f   depthinfo: %hhu", objX, objY, avgDepth_BB);
 		/* Updating Client with Feedback */
 		goal_handle->publish_feedback(feedback);
 
@@ -438,10 +442,13 @@ private:
   //spins towards obj based on detected object
   void spin_towards_obj(int fd)
   {
+        float x, z;
+	x = 0.1f;
+	z = 0.1f;	
 	if(!objFound) return;
 	int dist = deltaXfromCenter(objX);
-	if(dist>0){send_json_info_base(fd, .2, 2.9); return;}
-	send_json_info_base(fd, 0.2, -2.9);
+	if(dist>0){send_json_info_base(fd, x, z); return;}
+	send_json_info_base(fd, x, -1.0f * z);
 	return;
   }
 

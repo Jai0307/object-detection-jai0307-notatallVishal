@@ -9,3 +9,10 @@ run yolo model:
 
 ros2 launch isaac_ros_examples isaac_ros_examples.launch.py launch_fragments:=realsense_mono_rect_depth,yolov8 \
    model_file_path:=${ISAAC_ROS_WS}/isaac_ros_assets/models/yolov8/yolov8s.onnx engine_file_path:=${ISAAC_ROS_WS}/isaac_ros_assets/models/yolov8/yolov8s.plan
+
+visualizer for yolo
+terminal 1:
+ros2 run isaac_ros_yolov8 isaac_ros_yolov8_visualizer.py 
+
+terminal 2:
+ros2 run rqt_image_view rqt_image_view /yolov8_processed_image

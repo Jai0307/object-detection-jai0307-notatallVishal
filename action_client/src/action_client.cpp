@@ -134,17 +134,18 @@ private:
     RCLCPP_INFO(
       this->get_logger(), "Feedback received: %s", feedback->feedback.c_str());
 	  
-	 if(strcmp(feedback->feedback.c_str(), "Terminate.")){
+	 if(feedback->feedback == "Terminate."){
 		auto canceler = client_ptr_->async_cancel_goal(goal_handler);
 	 }
   }
 
   void result_callback(const GoalHandleDetect::WrappedResult & result)
   {
+    RCLCPP_ERROR(this->get_logger(), "in result callback :D");
     this->goal_done_ = true;
     switch (result.code) {
       case rclcpp_action::ResultCode::SUCCEEDED:
-		RCLCPP_ERROR(this->get_logger(), "Tracking Successful!!!!");
+		    RCLCPP_ERROR(this->get_logger(), "Tracking Successful!!!!");
         break;
       case rclcpp_action::ResultCode::ABORTED:
         RCLCPP_ERROR(this->get_logger(), "Tracking Failed.");
