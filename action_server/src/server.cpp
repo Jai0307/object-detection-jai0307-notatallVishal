@@ -33,6 +33,7 @@ Action Server Specs
 #include <cmath>
 #include <inttypes.h>
 
+#include <chrono>
 #include <iostream>
 #include <fcntl.h>
 #include <termios.h>
@@ -155,7 +156,8 @@ enum trackingState_t { /*States to determine movement */
 	T_WAIT = 0,
 	T_LOOK = 1,
 	T_MOVE = 2,
-	T_STOP = 3
+	T_STOP = 3,
+  T_FAIL = 4
 	};
 
 class TrackObjectServer : public rclcpp::Node
@@ -241,7 +243,7 @@ private:
 				sizeX = bbox.size_x;
 				sizeY = bbox.size_y;
 
-				headOn = std::abs(deltaXfromCenter(objX))/SCREENWIDTH < 0.2;
+				headOn = std::abs(deltaXfromCenter(objX))/SCREENWIDTH < 0.3;
                 return;  // Exit loop once found
             }
 
@@ -365,6 +367,9 @@ private:
     auto result = std::make_shared<Detect::Result>();
     auto move = geometry_msgs::msg::Twist();
 	    
+    rclcpp::Clock cock; 
+    rclcpp::Time time = cock.now();
+    double timeStart = time.seconds();
 	rclcpp::Rate loop_rate(50);
 	
 	trackingState_t currState, nextState;
@@ -378,20 +383,38 @@ private:
 		switch (currState) {
 			case T_WAIT:
       message = "Looking for Object";
-				nextState = objFound ? T_LOOK : T_WAIT;
-				stop_robot(rfd);
+        
+				// nextState = objFound ? T_LOOK : T_WAIT;
+        if(objFound) {
+          nextState = T_LOOK;
+          stop_robot(rfd);
+        }
+        else {
+          if(cock.now().seconds() - timeStart >= 20.0) {
+            stop_robot(rfd);
+            nextState = T_FAIL;
+          }
+          else {
+            nextState = T_WAIT;
+            send_json_info_base(rfd, 0.05, 0.1);
+          }
+        }
+				
 				break;
 			case T_LOOK:
 				/* rotate based on the location */
+        //if(!objFound){stop_robot(rfd); break;}
+
 				spin_towards_obj(rfd);
         message = "Rotating";
-				if(headOn && (avgDepth_BB < 20) && (avgDepth_BB != 0)) nextState = T_MOVE;
+				if(headOn && (avgDepth_BB < 30) && (avgDepth_BB != 0)) nextState = T_MOVE;
 				break; 
 			case T_MOVE:
 				/* move forward */
+        if(!objFound){stop_robot(rfd); break;}
 				if(avgDepth_BB) move_forward(rfd);
         message = "Moving Forward";
-				if(!headOn) nextState = T_LOOK;
+				// if(!headOn) nextState = T_LOOK;
 
 				if((avgDepth_BB != 0) && (avgDepth_BB < 53) && headOn) nextState = T_STOP;
 				break;
@@ -400,6 +423,16 @@ private:
         message = "I am done";
 				complete = true;
 				break;
+      case T_FAIL:
+        complete = true;
+        if (rclcpp::ok()) {
+          result->result = "shits fucked";
+          goal_handle->abort(result);
+          RCLCPP_INFO(this->get_logger(), "Goal succeeded");
+        stop_robot(rfd);
+        close(rfd);
+        }
+        return;
 		}
 		currState = nextState;
     RCLCPP_INFO(this->get_logger(), "Looking for %s", reqObjectName.c_str());
@@ -443,20 +476,22 @@ private:
   void spin_towards_obj(int fd)
   {
         float x, z;
-	x = 0.1f;
+	x = 0.05f;
 	z = 0.1f;	
 	if(!objFound) return;
 	int dist = deltaXfromCenter(objX);
-	if(dist>0){send_json_info_base(fd, x, z); return;}
-	send_json_info_base(fd, x, -1.0f * z);
+	if(dist>0){send_json_info_base(fd, x, -1.0*z); return;}
+	send_json_info_base(fd, x, 1.0f * z);
 	return;
   }
+
+  
 
   //moves robot forward default vel
   //only call when head on
   void move_forward(int fd)
   {
-	send_json_info_base(fd, 0.4, 0.0);
+	send_json_info_base(fd, 0.2, 0.0);
   }
 
   void stop_robot(int fd){
