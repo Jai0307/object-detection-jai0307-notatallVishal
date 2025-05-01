@@ -41,7 +41,7 @@ public:
       this->get_node_graph_interface(),
       this->get_node_logging_interface(),
       this->get_node_waitables_interface(),
-      "action_client");
+      "detect_action");
 
 
 	subscription_ = this->create_subscription<std_msgs::msg::String>("input_topic", 10, 
@@ -60,6 +60,10 @@ public:
   void send_goal()
   {
     using namespace std::placeholders;
+    if(!recieved_input) {
+      RCLCPP_INFO(this->get_logger(), "no input recieved\n");
+      return;
+    }
 
     this->timer_->cancel();
 
@@ -105,10 +109,13 @@ private:
   std::string objectName;
   rclcpp::TimerBase::SharedPtr timer_;
   bool goal_done_;
+  bool recieved_input = false; 
   
   void input_callback(const std_msgs::msg::String::SharedPtr msg) {
 	RCLCPP_INFO(this->get_logger(), "Got %s\n", msg->data.c_str());
+  recieved_input = true;
 	objectName = msg->data;
+  send_goal();
   }
 
   void goal_response_callback(const GoalHandleDetect::SharedPtr & goal_handle)

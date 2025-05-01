@@ -49,8 +49,8 @@ Action Server Specs
 #include "std_msgs/msg/bool.hpp"
 #include "sensor_msgs/msg/image.hpp"
 
-#define SCREENWIDTH 640
-#define SCREENHEIGHT 480
+#define SCREENWIDTH imageX
+#define SCREENHEIGHT imageY
 
 static const std::set<std::string> COCO_ObjSet = {
 	"person", "bicycle", "car", "motorcycle", "airplane", "bus", "train", "truck", "boat", "traffic light",
@@ -59,7 +59,7 @@ static const std::set<std::string> COCO_ObjSet = {
 	"skis", "snowboard", "sports ball", "kite", "baseball bat", "baseball glove", "skateboard", "surfboard",
 	"tennis racket", "bottle", "wine glass", "cup", "fork", "knife", "spoon", "bowl", "banana", "apple",
 	"sandwich", "orange", "broccoli", "carrot", "hot dog", "pizza", "donut", "cake", "chair", "couch",
-	"potted plant", "bed", "dining table", "toilet", "TV", "laptop", "mouse", "remote", "keyboard", "cell phone",
+	"potted plant", "bed", "dining table", "toilet", "tv", "laptop", "mouse", "remote", "keyboard", "cell phone",
 	"microwave", "oven", "toaster", "sink", "refrigerator", "book", "clock", "vase", "scissors", "teddy bear",
 	"hair drier", "toothbrush"
 };
@@ -107,11 +107,55 @@ static const std::map<int, std::string> CocoLabelMap = {
   { 78, "hair drier"     }, { 79, "toothbrush"     }
 };
 
+static const std::map<std::string, std::string> FlippedCocoLabelMap = {
+  { "person", "0" },         { "bicycle", "1" },
+  { "car", "2" },            { "motorcycle", "3" },
+  { "airplane", "4" },       { "bus", "5" },
+  { "train", "6" },          { "truck", "7" },
+  { "boat", "8" },           { "traffic light", "9" },
+  { "fire hydrant", "10" },  { "stop sign", "11" },
+  { "parking meter", "12" }, { "bench", "13" },
+  { "bird", "14" },          { "cat", "15" },
+  { "dog", "16" },           { "horse", "17" },
+  { "sheep", "18" },         { "cow", "19" },
+  { "elephant", "20" },      { "bear", "21" },
+  { "zebra", "22" },         { "giraffe", "23" },
+  { "backpack", "24" },      { "umbrella", "25" },
+  { "handbag", "26" },       { "tie", "27" },
+  { "suitcase", "28" },      { "frisbee", "29" },
+  { "skis", "30" },          { "snowboard", "31" },
+  { "sports ball", "32" },   { "kite", "33" },
+  { "baseball bat", "34" },  { "baseball glove", "35" },
+  { "skateboard", "36" },    { "surfboard", "37" },
+  { "tennis racket", "38" }, { "bottle", "39" },
+  { "wine glass", "40" },    { "cup", "41" },
+  { "fork", "42" },          { "knife", "43" },
+  { "spoon", "44" },         { "bowl", "45" },
+  { "banana", "46" },        { "apple", "47" },
+  { "sandwich", "48" },      { "orange", "49" },
+  { "broccoli", "50" },      { "carrot", "51" },
+  { "hot dog", "52" },       { "pizza", "53" },
+  { "donut", "54" },         { "cake", "55" },
+  { "chair", "56" },         { "couch", "57" },
+  { "potted plant", "58" },  { "bed", "59" },
+  { "dining table", "60" },  { "toilet", "61" },
+  { "tv", "62" },            { "laptop", "63" },
+  { "mouse", "64" },         { "remote", "65" },
+  { "keyboard", "66" },      { "cell phone", "67" },
+  { "microwave", "68" },     { "oven", "69" },
+  { "toaster", "70" },       { "sink", "71" },
+  { "refrigerator", "72" },  { "book", "73" },
+  { "clock", "74" },         { "vase", "75" },
+  { "scissors", "76" },      { "teddy bear", "77" },
+  { "hair drier", "78" },    { "toothbrush", "79" }
+};
+
+
 enum trackingState_t { /*States to determine movement */
-	T_WAIT,
-	T_LOOK,
-	T_MOVE, /* */
-	T_STOP /* Complete State */
+	T_WAIT = 0,
+	T_LOOK = 1,
+	T_MOVE = 2,
+	T_STOP = 3
 	};
 
 class TrackObjectServer : public rclcpp::Node
@@ -127,7 +171,7 @@ public:
 
     this->action_server_ = rclcpp_action::create_server<Detect>(
       this,
-      "track_object_server",
+      "detect_action",
       std::bind(&TrackObjectServer::handle_goal, this, _1, _2),
       std::bind(&TrackObjectServer::handle_cancel, this, _1),
       std::bind(&TrackObjectServer::handle_accepted, this, _1));
@@ -157,8 +201,12 @@ private:
   float sizeX;
   float sizeY;
 
+  float imageX, imageY;
+
   bool objFound;
+  bool objFoundOnce = false;
   bool headOn;
+  bool input_recieved = false;
   /* depth Stored variables */
   float avgDepth_BB; 
 
@@ -174,24 +222,26 @@ private:
   }
 
   void camera_callback(const vision_msgs::msg::Detection2DArray::SharedPtr msg) {
-	  objFound = false; 
+	  if(!input_recieved) return;
+    objFound = false; 
 	  objX = -1;
 	  objY = -1;
 	  headOn = false;
 	  for(const auto &detection : msg->detections) {
 		  std::string detected_object = detection.results[0].hypothesis.class_id;
 
-            if (detected_object == reqObjectName) {
-                RCLCPP_INFO(this->get_logger(), "Requested object '%s' found!", reqObjectName.c_str());
+            if (detected_object == FlippedCocoLabelMap.at(reqObjectName)) {
+              if(!objFoundOnce) {(this->get_logger(), "Requested object '%s' found!", reqObjectName.c_str());}
 				reqObject = detection;
                 objFound = true;
+                objFoundOnce = true;
 				auto bbox = detection.bbox;
 				objX = bbox.center.position.x;
 				objY = bbox.center.position.y;
 				sizeX = bbox.size_x;
 				sizeY = bbox.size_y;
 
-				headOn = std::abs(deltaXfromCenter(objX))/SCREENWIDTH < 0.1;
+				headOn = std::abs(deltaXfromCenter(objX))/SCREENWIDTH < 0.2;
                 return;  // Exit loop once found
             }
 
@@ -209,6 +259,9 @@ private:
 	start = objX - size_x/2 + SCREENWIDTH * (objY - size_y/2);
 	end = objX + size_x/2 + SCREENWIDTH * (objY + size_y/2);
 
+  if(start <= 0) start = 0;
+  if(end >= SCREENHEIGHT*SCREENWIDTH) end = SCREENHEIGHT*SCREENWIDTH - 1;
+
 	for(int i = start; i < end; i++) avg += depthData[i];
 
 	avg /= (end-start);
@@ -221,7 +274,10 @@ private:
 	  std::vector<uint8_t> data(msg->data.begin(), msg->data.begin() + 307200);
 
 
+    imageX = msg->width;
+    imageY = msg->height;
 	  avgDepth_BB = findAvgDepthBBOX(sizeX, sizeY, objX, objY, data);
+
 	  return;
   }
   
@@ -229,15 +285,16 @@ private:
     const rclcpp_action::GoalUUID & uuid,
     std::shared_ptr<const Detect::Goal> goal)
   {
-	
-	if(COCO_ObjSet.find(goal->object_name) == COCO_ObjSet.end()) {
-		RCLCPP_WARN(this->get_logger(), "Rejected request: '%s' is not a COCO dataset object.", goal->object_name.c_str());
-            return rclcpp_action::GoalResponse::REJECT;
+    RCLCPP_INFO(this->get_logger(), "Recieved client ping");
+    if(COCO_ObjSet.find(goal->object_name) == COCO_ObjSet.end()) {
+      RCLCPP_WARN(this->get_logger(), "Rejected request: '%s' is not a COCO dataset object.", goal->object_name.c_str());
+              return rclcpp_action::GoalResponse::REJECT;
 	}
 	
     (void)uuid;
 	RCLCPP_INFO(this->get_logger(), "Accepted request to track: '%s'", goal->object_name.c_str());
 	reqObjectName = goal->object_name;
+    input_recieved = true;
     return rclcpp_action::GoalResponse::ACCEPT_AND_EXECUTE;
   }
 
@@ -341,7 +398,9 @@ private:
 				break;
 		}
 		currState = nextState;
-
+    RCLCPP_INFO(this->get_logger(), "Looking for %s", reqObjectName.c_str());
+    RCLCPP_INFO(this->get_logger(), "currState %d | nextState %d", currState, nextState);
+    RCLCPP_INFO(this->get_logger(), "bbX : %f --- bbY: %f   depthinfo: %f", objX, objY, avgDepth_BB);
 		/* Updating Client with Feedback */
 		goal_handle->publish_feedback(feedback);
 
