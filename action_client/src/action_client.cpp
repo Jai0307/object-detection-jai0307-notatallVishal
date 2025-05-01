@@ -69,12 +69,15 @@ public:
       RCLCPP_ERROR(this->get_logger(), "Action client not initialized");
     }
 
-    if (!this->client_ptr_->wait_for_action_server(std::chrono::seconds(10))) {
+    while (!this->client_ptr_->wait_for_action_server(std::chrono::seconds(10) )) {
       RCLCPP_ERROR(this->get_logger(), "Action server not available after waiting");
       this->goal_done_ = true;
+      // sleep(1)
       return;
     }
-
+    // while(objectName == ""){
+    //   this->client_ptr_->wait_for_action_server(std::chrono::seconds(10)
+    // }
     auto goal_msg = Detect::Goal();
 	
     goal_msg.object_name = objectName;

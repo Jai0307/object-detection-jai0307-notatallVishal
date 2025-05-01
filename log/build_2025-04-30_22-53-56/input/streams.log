@@ -1,0 +1,72 @@
+[0.028s] Invoking command in '/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/build/input': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake /workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/input -DCMAKE_INSTALL_PREFIX=/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/install/input
+[0.173s] -- The C compiler identification is GNU 11.4.0
+[0.317s] -- The CXX compiler identification is GNU 11.4.0
+[0.336s] -- Detecting C compiler ABI info
+[0.522s] -- Detecting C compiler ABI info - done
+[0.542s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.542s] -- Detecting C compile features
+[0.544s] -- Detecting C compile features - done
+[0.551s] -- Detecting CXX compiler ABI info
+[0.762s] -- Detecting CXX compiler ABI info - done
+[0.782s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.785s] -- Detecting CXX compile features
+[0.785s] -- Detecting CXX compile features - done
+[0.809s] -- Found ament_cmake: 1.3.11 (/opt/ros/humble/share/ament_cmake/cmake)
+[2.740s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[3.060s] -- Found rclcpp: 16.0.12 (/opt/ros/humble/share/rclcpp/cmake)
+[3.210s] -- Found rosidl_generator_c: 3.1.6 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[3.232s] -- Found rosidl_adapter: 3.1.6 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[3.262s] -- Found rosidl_generator_cpp: 3.1.6 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[3.301s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[3.353s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[3.507s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[3.518s] -- Found rmw_fastrtps_cpp: 6.2.7 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[3.802s] -- Found OpenSSL: /usr/lib/aarch64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[3.892s] -- Found FastRTPS: /opt/ros/humble/include  
+[4.035s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[4.075s] -- Looking for pthread.h
+[4.264s] -- Looking for pthread.h - found
+[4.265s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[4.462s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[4.468s] -- Found Threads: TRUE  
+[4.621s] -- Found ament_lint_auto: 0.12.12 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[4.857s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[4.857s] -- Configured cppcheck include dirs: 
+[4.857s] -- Configured cppcheck exclude dirs and/or files: 
+[4.858s] -- Added test 'flake8' to check Python code syntax and style conventions
+[4.860s] -- Added test 'lint_cmake' to check CMake code style
+[4.861s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[4.863s] -- Added test 'uncrustify' to check C / C++ code style
+[4.863s] -- Configured uncrustify additional arguments: 
+[4.864s] -- Added test 'xmllint' to check XML markup files
+[4.868s] -- Configuring done
+[4.895s] -- Generating done
+[4.905s] -- Build files have been written to: /workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/build/input
+[4.934s] Invoked command in '/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/build/input' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake /workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/input -DCMAKE_INSTALL_PREFIX=/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/install/input
+[4.940s] Invoking command in '/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/build/input': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/build/input -- -j6 -l6
+[5.087s] [ 50%] [32mBuilding CXX object CMakeFiles/input_node.dir/src/input.cpp.o[0m
+[15.578s] [100%] [32m[1mLinking CXX executable input_node[0m
+[16.021s] [100%] Built target input_node
+[16.056s] Invoked command in '/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/build/input' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/build/input -- -j6 -l6
+[16.082s] Invoking command in '/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/build/input': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/build/input
+[16.101s] -- Install configuration: ""
+[16.101s] -- Installing: /workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/install/input/lib/input/input_node
+[16.105s] -- Set runtime path of "/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/install/input/lib/input/input_node" to ""
+[16.105s] -- Installing: /workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/install/input/share/input//launch
+[16.105s] -- Installing: /workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/install/input/share/input//launch/input.launch.py
+[16.105s] -- Installing: /workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/install/input/share/ament_index/resource_index/package_run_dependencies/input
+[16.106s] -- Installing: /workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/install/input/share/ament_index/resource_index/parent_prefix_path/input
+[16.106s] -- Installing: /workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/install/input/share/input/environment/ament_prefix_path.sh
+[16.107s] -- Installing: /workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/install/input/share/input/environment/ament_prefix_path.dsv
+[16.107s] -- Installing: /workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/install/input/share/input/environment/path.sh
+[16.107s] -- Installing: /workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/install/input/share/input/environment/path.dsv
+[16.107s] -- Installing: /workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/install/input/share/input/local_setup.bash
+[16.108s] -- Installing: /workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/install/input/share/input/local_setup.sh
+[16.108s] -- Installing: /workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/install/input/share/input/local_setup.zsh
+[16.108s] -- Installing: /workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/install/input/share/input/local_setup.dsv
+[16.109s] -- Installing: /workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/install/input/share/input/package.dsv
+[16.109s] -- Installing: /workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/install/input/share/ament_index/resource_index/packages/input
+[16.112s] -- Installing: /workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/install/input/share/input/cmake/inputConfig.cmake
+[16.112s] -- Installing: /workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/install/input/share/input/cmake/inputConfig-version.cmake
+[16.112s] -- Installing: /workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/install/input/share/input/package.xml
+[16.116s] Invoked command in '/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/build/input' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/build/input

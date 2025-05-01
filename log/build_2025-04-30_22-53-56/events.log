@@ -1,0 +1,243 @@
+[0.000000] (-) TimerEvent: {}
+[0.001816] (-) JobUnselected: {'identifier': 'action_client'}
+[0.002119] (-) JobUnselected: {'identifier': 'action_server'}
+[0.003090] (-) JobUnselected: {'identifier': 'custom_interfaces'}
+[0.003828] (input) JobQueued: {'identifier': 'input', 'dependencies': OrderedDict()}
+[0.004101] (input) JobStarted: {'identifier': 'input'}
+[0.028397] (input) JobProgress: {'identifier': 'input', 'progress': 'cmake'}
+[0.029642] (input) Command: {'cmd': ['/usr/bin/cmake', '/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/input', '-DCMAKE_INSTALL_PREFIX=/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/install/input'], 'cwd': '/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/build/input', 'env': OrderedDict([('LIBRARY_PATH', '/usr/local/cuda/lib64/stubs'), ('PYTHONWARNINGS', 'ignore:::setuptools.command.install,ignore:::setuptools.command.easy_install,ignore:::pkg_resources,ignore:::setuptools.command.develop'), ('NV_LIBCUBLAS_VERSION', '12.6.1.4-1'), ('USER', 'autorobo'), ('NV_CUDA_NSIGHT_COMPUTE_VERSION', '12.6.11-1'), ('HOSTNAME', 'autorobo-desktop'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/workspaces/isaac_ros-dev/ros2_ws/install/action_client/lib:/workspaces/isaac_ros-dev/ros2_ws/install/custom_interfaces/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib:/usr/lib/aarch64-linux-gnu/tegra/weston:/usr/lib/aarch64-linux-gnu/tegra-egl:/usr/local/cuda-12.6/targets/aarch64-linux/lib:/usr/lib/aarch64-linux-gnu/tegra:/opt/nvidia/vpi3/lib64:/usr/local/libcudss-linux-0.3.0.9_cuda12-archive/lib:/usr/local/nvidia/lib:/usr/local/nvidia/lib64:/usr/lib/aarch64-linux-gnu-host:/opt/tritonserver/lib'), ('HOME', '/home/admin'), ('OLDPWD', '/workspaces/isaac_ros-dev/ros2_ws'), ('HOST_USER_GID', '1001'), ('NV_LIBCUBLAS_DEV_VERSION', '12.6.1.4-1'), ('ROS_PYTHON_VERSION', '3'), ('NVIDIA_PVA_DEVICE', 'all'), ('NV_LIBNPP_PACKAGE', 'libnpp-12-6=12.3.1.54-1'), ('CUDA_VERSION', '12.6.11'), ('COLCON_PREFIX_PATH', '/workspaces/isaac_ros-dev/ros2_ws/install'), ('ROS_DISTRO', 'humble'), ('NV_LIBCUBLAS_PACKAGE_NAME', 'libcublas-12-6'), ('NVIDIA_REQUIRE_CUDA', 'cuda>=12.6'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('NV_LIBCUSPARSE_VERSION', '12.5.3.3-1'), ('NVIDIA_DRIVER_CAPABILITIES', 'all'), ('NV_CUDA_LIB_VERSION', '12.6.11-1'), ('NV_NVML_DEV_VERSION', '12.6.68-1'), ('USERNAME', 'admin'), ('NV_LIBNPP_DEV_PACKAGE', 'libnpp-dev-12-6=12.3.1.54-1'), ('TERM', 'xterm'), ('ISAAC_ROS_WS', '/workspaces/isaac_ros-dev'), ('NV_CUDA_CUDART_VERSION', '12.6.68-1'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/opt/ros/humble/vcstool/scripts:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/src/tensorrt/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('NV_LIBCUBLAS_DEV_PACKAGE_NAME', 'libcublas-dev-12-6'), ('NV_LIBCUBLAS_PACKAGE', 'libcublas-12-6=12.6.1.4-1'), ('HOST_USER_UID', '1000'), ('NVARCH', 'arm64'), ('CUDSS_DIR', '/usr/local/libcudss-linux-0.3.0.9_cuda12-archive'), ('NV_LIBCUSPARSE_DEV_VERSION', '12.5.3.3-1'), ('DISPLAY', ':1'), ('NVIDIA_PRODUCT_NAME', 'CUDA'), ('LANG', 'en_US.UTF-8'), ('RMW_IMPLEMENTATION', 'rmw_fastrtps_cpp'), ('NV_CUDA_CUDART_DEV_VERSION', '12.6.68-1'), ('ROS_ROOT', '/opt/ros/humble'), ('SSH_AUTH_SOCK', '/ssh-agent'), ('AMENT_PREFIX_PATH', '/workspaces/isaac_ros-dev/ros2_ws/install/input:/workspaces/isaac_ros-dev/ros2_ws/install/action_client:/workspaces/isaac_ros-dev/ros2_ws/install/custom_interfaces:/workspaces/isaac_ros-dev/ros2_ws/install/action_server:/opt/ros/humble'), ('DEBIAN_FRONTEND', 'noninteractive'), ('SHELL', '/bin/bash'), ('TRT_INCLUDE_PATH', '/usr/include/aarch64-linux-gnu'), ('NV_LIBCUBLAS_DEV_PACKAGE', 'libcublas-dev-12-6=12.6.1.4-1'), ('NV_CUDA_NSIGHT_COMPUTE_DEV_PACKAGE', 'cuda-nsight-compute-12-6=12.6.11-1'), ('NVIDIA_REQUIRE_JETPACK_HOST_MOUNTS', 'base-only'), ('NV_NVTX_VERSION', '12.6.68-1'), ('NV_LIBNPP_VERSION', '12.3.1.54-1'), ('PWD', '/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/build/input'), ('PYTHONPATH', '/workspaces/isaac_ros-dev/ros2_ws/install/action_client/local/lib/python3.10/dist-packages:/workspaces/isaac_ros-dev/ros2_ws/install/custom_interfaces/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages:/opt/ros/humble/vcstool:'), ('NVIDIA_VISIBLE_DEVICES', 'void'), ('COLCON', '1'), ('NV_LIBNPP_DEV_VERSION', '12.3.1.54-1'), ('CMAKE_PREFIX_PATH', '/workspaces/isaac_ros-dev/ros2_ws/install/input:/workspaces/isaac_ros-dev/ros2_ws/install/action_client:/workspaces/isaac_ros-dev/ros2_ws/install/custom_interfaces:/workspaces/isaac_ros-dev/ros2_ws/install/action_server:/usr/local/libcudss-linux-0.3.0.9_cuda12-archive::/opt/ros/humble'), ('TRT_LIB_PATH', '/usr/lib/aarch64-linux-gnu')]), 'shell': False}
+[0.099865] (-) TimerEvent: {}
+[0.176824] (input) StdoutLine: {'line': b'-- The C compiler identification is GNU 11.4.0\n'}
+[0.200027] (-) TimerEvent: {}
+[0.300977] (-) TimerEvent: {}
+[0.320898] (input) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 11.4.0\n'}
+[0.340184] (input) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.401166] (-) TimerEvent: {}
+[0.501988] (-) TimerEvent: {}
+[0.525918] (input) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.545597] (input) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[0.546428] (input) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.547814] (input) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.555096] (input) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.602167] (-) TimerEvent: {}
+[0.703329] (-) TimerEvent: {}
+[0.766374] (input) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.786299] (input) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[0.788738] (input) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.789158] (input) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.803515] (-) TimerEvent: {}
+[0.812509] (input) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.11 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[0.903681] (-) TimerEvent: {}
+[1.004486] (-) TimerEvent: {}
+[1.105157] (-) TimerEvent: {}
+[1.205850] (-) TimerEvent: {}
+[1.307032] (-) TimerEvent: {}
+[1.407717] (-) TimerEvent: {}
+[1.509263] (-) TimerEvent: {}
+[1.610088] (-) TimerEvent: {}
+[1.710795] (-) TimerEvent: {}
+[1.811631] (-) TimerEvent: {}
+[1.912514] (-) TimerEvent: {}
+[2.013262] (-) TimerEvent: {}
+[2.113942] (-) TimerEvent: {}
+[2.214626] (-) TimerEvent: {}
+[2.315402] (-) TimerEvent: {}
+[2.416083] (-) TimerEvent: {}
+[2.516975] (-) TimerEvent: {}
+[2.617659] (-) TimerEvent: {}
+[2.718419] (-) TimerEvent: {}
+[2.744043] (input) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter \n'}
+[2.818587] (-) TimerEvent: {}
+[2.919312] (-) TimerEvent: {}
+[3.020079] (-) TimerEvent: {}
+[3.063496] (input) StdoutLine: {'line': b'-- Found rclcpp: 16.0.12 (/opt/ros/humble/share/rclcpp/cmake)\n'}
+[3.120269] (-) TimerEvent: {}
+[3.213503] (input) StdoutLine: {'line': b'-- Found rosidl_generator_c: 3.1.6 (/opt/ros/humble/share/rosidl_generator_c/cmake)\n'}
+[3.220558] (-) TimerEvent: {}
+[3.235474] (input) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.6 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[3.265429] (input) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 3.1.6 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)\n'}
+[3.304415] (input) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[3.320754] (-) TimerEvent: {}
+[3.357351] (input) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[3.420979] (-) TimerEvent: {}
+[3.510359] (input) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)\n'}
+[3.521176] (-) TimerEvent: {}
+[3.521816] (input) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 6.2.7 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)\n'}
+[3.621356] (-) TimerEvent: {}
+[3.722111] (-) TimerEvent: {}
+[3.805964] (input) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/aarch64-linux-gnu/libcrypto.so (found version "3.0.2")  \n'}
+[3.822292] (-) TimerEvent: {}
+[3.895999] (input) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/humble/include  \n'}
+[3.922483] (-) TimerEvent: {}
+[4.023261] (-) TimerEvent: {}
+[4.038916] (input) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[4.078563] (input) StdoutLine: {'line': b'-- Looking for pthread.h\n'}
+[4.123453] (-) TimerEvent: {}
+[4.224220] (-) TimerEvent: {}
+[4.268182] (input) StdoutLine: {'line': b'-- Looking for pthread.h - found\n'}
+[4.268926] (input) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD\n'}
+[4.324416] (-) TimerEvent: {}
+[4.425153] (-) TimerEvent: {}
+[4.466312] (input) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success\n'}
+[4.472314] (input) StdoutLine: {'line': b'-- Found Threads: TRUE  \n'}
+[4.525348] (-) TimerEvent: {}
+[4.625108] (input) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.12.12 (/opt/ros/humble/share/ament_lint_auto/cmake)\n'}
+[4.625669] (-) TimerEvent: {}
+[4.726175] (-) TimerEvent: {}
+[4.827047] (-) TimerEvent: {}
+[4.860412] (input) StdoutLine: {'line': b"-- Added test 'cppcheck' to perform static code analysis on C / C++ code\n"}
+[4.860998] (input) StdoutLine: {'line': b'-- Configured cppcheck include dirs: \n'}
+[4.861209] (input) StdoutLine: {'line': b'-- Configured cppcheck exclude dirs and/or files: \n'}
+[4.862063] (input) StdoutLine: {'line': b"-- Added test 'flake8' to check Python code syntax and style conventions\n"}
+[4.863606] (input) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[4.864856] (input) StdoutLine: {'line': b"-- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257\n"}
+[4.866896] (input) StdoutLine: {'line': b"-- Added test 'uncrustify' to check C / C++ code style\n"}
+[4.867187] (input) StdoutLine: {'line': b'-- Configured uncrustify additional arguments: \n'}
+[4.868147] (input) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[4.872437] (input) StdoutLine: {'line': b'-- Configuring done\n'}
+[4.899225] (input) StdoutLine: {'line': b'-- Generating done\n'}
+[4.908655] (input) StdoutLine: {'line': b'-- Build files have been written to: /workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/build/input\n'}
+[4.927245] (-) TimerEvent: {}
+[4.938028] (input) CommandEnded: {'returncode': 0}
+[4.942564] (input) JobProgress: {'identifier': 'input', 'progress': 'build'}
+[4.942974] (input) Command: {'cmd': ['/usr/bin/cmake', '--build', '/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/build/input', '--', '-j6', '-l6'], 'cwd': '/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/build/input', 'env': OrderedDict([('LIBRARY_PATH', '/usr/local/cuda/lib64/stubs'), ('PYTHONWARNINGS', 'ignore:::setuptools.command.install,ignore:::setuptools.command.easy_install,ignore:::pkg_resources,ignore:::setuptools.command.develop'), ('NV_LIBCUBLAS_VERSION', '12.6.1.4-1'), ('USER', 'autorobo'), ('NV_CUDA_NSIGHT_COMPUTE_VERSION', '12.6.11-1'), ('HOSTNAME', 'autorobo-desktop'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/workspaces/isaac_ros-dev/ros2_ws/install/action_client/lib:/workspaces/isaac_ros-dev/ros2_ws/install/custom_interfaces/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib:/usr/lib/aarch64-linux-gnu/tegra/weston:/usr/lib/aarch64-linux-gnu/tegra-egl:/usr/local/cuda-12.6/targets/aarch64-linux/lib:/usr/lib/aarch64-linux-gnu/tegra:/opt/nvidia/vpi3/lib64:/usr/local/libcudss-linux-0.3.0.9_cuda12-archive/lib:/usr/local/nvidia/lib:/usr/local/nvidia/lib64:/usr/lib/aarch64-linux-gnu-host:/opt/tritonserver/lib'), ('HOME', '/home/admin'), ('OLDPWD', '/workspaces/isaac_ros-dev/ros2_ws'), ('HOST_USER_GID', '1001'), ('NV_LIBCUBLAS_DEV_VERSION', '12.6.1.4-1'), ('ROS_PYTHON_VERSION', '3'), ('NVIDIA_PVA_DEVICE', 'all'), ('NV_LIBNPP_PACKAGE', 'libnpp-12-6=12.3.1.54-1'), ('CUDA_VERSION', '12.6.11'), ('COLCON_PREFIX_PATH', '/workspaces/isaac_ros-dev/ros2_ws/install'), ('ROS_DISTRO', 'humble'), ('NV_LIBCUBLAS_PACKAGE_NAME', 'libcublas-12-6'), ('NVIDIA_REQUIRE_CUDA', 'cuda>=12.6'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('NV_LIBCUSPARSE_VERSION', '12.5.3.3-1'), ('NVIDIA_DRIVER_CAPABILITIES', 'all'), ('NV_CUDA_LIB_VERSION', '12.6.11-1'), ('NV_NVML_DEV_VERSION', '12.6.68-1'), ('USERNAME', 'admin'), ('NV_LIBNPP_DEV_PACKAGE', 'libnpp-dev-12-6=12.3.1.54-1'), ('TERM', 'xterm'), ('ISAAC_ROS_WS', '/workspaces/isaac_ros-dev'), ('NV_CUDA_CUDART_VERSION', '12.6.68-1'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/opt/ros/humble/vcstool/scripts:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/src/tensorrt/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('NV_LIBCUBLAS_DEV_PACKAGE_NAME', 'libcublas-dev-12-6'), ('NV_LIBCUBLAS_PACKAGE', 'libcublas-12-6=12.6.1.4-1'), ('HOST_USER_UID', '1000'), ('NVARCH', 'arm64'), ('CUDSS_DIR', '/usr/local/libcudss-linux-0.3.0.9_cuda12-archive'), ('NV_LIBCUSPARSE_DEV_VERSION', '12.5.3.3-1'), ('DISPLAY', ':1'), ('NVIDIA_PRODUCT_NAME', 'CUDA'), ('LANG', 'en_US.UTF-8'), ('RMW_IMPLEMENTATION', 'rmw_fastrtps_cpp'), ('NV_CUDA_CUDART_DEV_VERSION', '12.6.68-1'), ('ROS_ROOT', '/opt/ros/humble'), ('SSH_AUTH_SOCK', '/ssh-agent'), ('AMENT_PREFIX_PATH', '/workspaces/isaac_ros-dev/ros2_ws/install/input:/workspaces/isaac_ros-dev/ros2_ws/install/action_client:/workspaces/isaac_ros-dev/ros2_ws/install/custom_interfaces:/workspaces/isaac_ros-dev/ros2_ws/install/action_server:/opt/ros/humble'), ('DEBIAN_FRONTEND', 'noninteractive'), ('SHELL', '/bin/bash'), ('TRT_INCLUDE_PATH', '/usr/include/aarch64-linux-gnu'), ('NV_LIBCUBLAS_DEV_PACKAGE', 'libcublas-dev-12-6=12.6.1.4-1'), ('NV_CUDA_NSIGHT_COMPUTE_DEV_PACKAGE', 'cuda-nsight-compute-12-6=12.6.11-1'), ('NVIDIA_REQUIRE_JETPACK_HOST_MOUNTS', 'base-only'), ('NV_NVTX_VERSION', '12.6.68-1'), ('NV_LIBNPP_VERSION', '12.3.1.54-1'), ('PWD', '/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/build/input'), ('PYTHONPATH', '/workspaces/isaac_ros-dev/ros2_ws/install/action_client/local/lib/python3.10/dist-packages:/workspaces/isaac_ros-dev/ros2_ws/install/custom_interfaces/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages:/opt/ros/humble/vcstool:'), ('NVIDIA_VISIBLE_DEVICES', 'void'), ('COLCON', '1'), ('NV_LIBNPP_DEV_VERSION', '12.3.1.54-1'), ('CMAKE_PREFIX_PATH', '/workspaces/isaac_ros-dev/ros2_ws/install/input:/workspaces/isaac_ros-dev/ros2_ws/install/action_client:/workspaces/isaac_ros-dev/ros2_ws/install/custom_interfaces:/workspaces/isaac_ros-dev/ros2_ws/install/action_server:/usr/local/libcudss-linux-0.3.0.9_cuda12-archive::/opt/ros/humble'), ('TRT_LIB_PATH', '/usr/lib/aarch64-linux-gnu')]), 'shell': False}
+[5.027424] (-) TimerEvent: {}
+[5.090063] (input) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/input_node.dir/src/input.cpp.o\x1b[0m\n'}
+[5.127623] (-) TimerEvent: {}
+[5.228370] (-) TimerEvent: {}
+[5.329259] (-) TimerEvent: {}
+[5.430193] (-) TimerEvent: {}
+[5.531267] (-) TimerEvent: {}
+[5.631983] (-) TimerEvent: {}
+[5.732735] (-) TimerEvent: {}
+[5.833623] (-) TimerEvent: {}
+[5.934452] (-) TimerEvent: {}
+[6.035262] (-) TimerEvent: {}
+[6.136057] (-) TimerEvent: {}
+[6.236916] (-) TimerEvent: {}
+[6.337771] (-) TimerEvent: {}
+[6.438628] (-) TimerEvent: {}
+[6.539522] (-) TimerEvent: {}
+[6.640401] (-) TimerEvent: {}
+[6.741275] (-) TimerEvent: {}
+[6.842131] (-) TimerEvent: {}
+[6.942997] (-) TimerEvent: {}
+[7.043834] (-) TimerEvent: {}
+[7.144620] (-) TimerEvent: {}
+[7.245841] (-) TimerEvent: {}
+[7.346707] (-) TimerEvent: {}
+[7.447592] (-) TimerEvent: {}
+[7.548448] (-) TimerEvent: {}
+[7.649315] (-) TimerEvent: {}
+[7.750194] (-) TimerEvent: {}
+[7.851154] (-) TimerEvent: {}
+[7.952024] (-) TimerEvent: {}
+[8.052887] (-) TimerEvent: {}
+[8.153732] (-) TimerEvent: {}
+[8.254514] (-) TimerEvent: {}
+[8.356355] (-) TimerEvent: {}
+[8.457120] (-) TimerEvent: {}
+[8.557900] (-) TimerEvent: {}
+[8.658629] (-) TimerEvent: {}
+[8.759513] (-) TimerEvent: {}
+[8.860236] (-) TimerEvent: {}
+[8.960982] (-) TimerEvent: {}
+[9.061875] (-) TimerEvent: {}
+[9.162623] (-) TimerEvent: {}
+[9.263792] (-) TimerEvent: {}
+[9.364680] (-) TimerEvent: {}
+[9.465412] (-) TimerEvent: {}
+[9.566136] (-) TimerEvent: {}
+[9.666904] (-) TimerEvent: {}
+[9.767642] (-) TimerEvent: {}
+[9.868628] (-) TimerEvent: {}
+[9.969382] (-) TimerEvent: {}
+[10.070198] (-) TimerEvent: {}
+[10.171005] (-) TimerEvent: {}
+[10.271821] (-) TimerEvent: {}
+[10.372944] (-) TimerEvent: {}
+[10.473825] (-) TimerEvent: {}
+[10.574580] (-) TimerEvent: {}
+[10.675386] (-) TimerEvent: {}
+[10.776156] (-) TimerEvent: {}
+[10.877043] (-) TimerEvent: {}
+[10.978068] (-) TimerEvent: {}
+[11.079871] (-) TimerEvent: {}
+[11.180756] (-) TimerEvent: {}
+[11.282049] (-) TimerEvent: {}
+[11.382849] (-) TimerEvent: {}
+[11.483611] (-) TimerEvent: {}
+[11.584409] (-) TimerEvent: {}
+[11.685180] (-) TimerEvent: {}
+[11.786012] (-) TimerEvent: {}
+[11.886838] (-) TimerEvent: {}
+[11.987610] (-) TimerEvent: {}
+[12.088494] (-) TimerEvent: {}
+[12.189356] (-) TimerEvent: {}
+[12.290229] (-) TimerEvent: {}
+[12.391133] (-) TimerEvent: {}
+[12.492011] (-) TimerEvent: {}
+[12.592827] (-) TimerEvent: {}
+[12.693683] (-) TimerEvent: {}
+[12.794510] (-) TimerEvent: {}
+[12.895413] (-) TimerEvent: {}
+[12.996272] (-) TimerEvent: {}
+[13.096997] (-) TimerEvent: {}
+[13.197875] (-) TimerEvent: {}
+[13.298592] (-) TimerEvent: {}
+[13.399349] (-) TimerEvent: {}
+[13.500187] (-) TimerEvent: {}
+[13.600989] (-) TimerEvent: {}
+[13.701712] (-) TimerEvent: {}
+[13.802561] (-) TimerEvent: {}
+[13.903396] (-) TimerEvent: {}
+[14.004106] (-) TimerEvent: {}
+[14.104942] (-) TimerEvent: {}
+[14.205749] (-) TimerEvent: {}
+[14.306554] (-) TimerEvent: {}
+[14.407431] (-) TimerEvent: {}
+[14.508278] (-) TimerEvent: {}
+[14.609111] (-) TimerEvent: {}
+[14.709953] (-) TimerEvent: {}
+[14.810793] (-) TimerEvent: {}
+[14.911639] (-) TimerEvent: {}
+[15.012467] (-) TimerEvent: {}
+[15.113315] (-) TimerEvent: {}
+[15.214170] (-) TimerEvent: {}
+[15.314931] (-) TimerEvent: {}
+[15.415766] (-) TimerEvent: {}
+[15.516948] (-) TimerEvent: {}
+[15.581936] (input) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable input_node\x1b[0m\n'}
+[15.617065] (-) TimerEvent: {}
+[15.717749] (-) TimerEvent: {}
+[15.818572] (-) TimerEvent: {}
+[15.922329] (-) TimerEvent: {}
+[16.023130] (-) TimerEvent: {}
+[16.023850] (input) StdoutLine: {'line': b'[100%] Built target input_node\n'}
+[16.058474] (input) CommandEnded: {'returncode': 0}
+[16.061024] (input) JobProgress: {'identifier': 'input', 'progress': 'install'}
+[16.083787] (input) Command: {'cmd': ['/usr/bin/cmake', '--install', '/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/build/input'], 'cwd': '/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/build/input', 'env': OrderedDict([('LIBRARY_PATH', '/usr/local/cuda/lib64/stubs'), ('PYTHONWARNINGS', 'ignore:::setuptools.command.install,ignore:::setuptools.command.easy_install,ignore:::pkg_resources,ignore:::setuptools.command.develop'), ('NV_LIBCUBLAS_VERSION', '12.6.1.4-1'), ('USER', 'autorobo'), ('NV_CUDA_NSIGHT_COMPUTE_VERSION', '12.6.11-1'), ('HOSTNAME', 'autorobo-desktop'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/workspaces/isaac_ros-dev/ros2_ws/install/action_client/lib:/workspaces/isaac_ros-dev/ros2_ws/install/custom_interfaces/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib:/usr/lib/aarch64-linux-gnu/tegra/weston:/usr/lib/aarch64-linux-gnu/tegra-egl:/usr/local/cuda-12.6/targets/aarch64-linux/lib:/usr/lib/aarch64-linux-gnu/tegra:/opt/nvidia/vpi3/lib64:/usr/local/libcudss-linux-0.3.0.9_cuda12-archive/lib:/usr/local/nvidia/lib:/usr/local/nvidia/lib64:/usr/lib/aarch64-linux-gnu-host:/opt/tritonserver/lib'), ('HOME', '/home/admin'), ('OLDPWD', '/workspaces/isaac_ros-dev/ros2_ws'), ('HOST_USER_GID', '1001'), ('NV_LIBCUBLAS_DEV_VERSION', '12.6.1.4-1'), ('ROS_PYTHON_VERSION', '3'), ('NVIDIA_PVA_DEVICE', 'all'), ('NV_LIBNPP_PACKAGE', 'libnpp-12-6=12.3.1.54-1'), ('CUDA_VERSION', '12.6.11'), ('COLCON_PREFIX_PATH', '/workspaces/isaac_ros-dev/ros2_ws/install'), ('ROS_DISTRO', 'humble'), ('NV_LIBCUBLAS_PACKAGE_NAME', 'libcublas-12-6'), ('NVIDIA_REQUIRE_CUDA', 'cuda>=12.6'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('NV_LIBCUSPARSE_VERSION', '12.5.3.3-1'), ('NVIDIA_DRIVER_CAPABILITIES', 'all'), ('NV_CUDA_LIB_VERSION', '12.6.11-1'), ('NV_NVML_DEV_VERSION', '12.6.68-1'), ('USERNAME', 'admin'), ('NV_LIBNPP_DEV_PACKAGE', 'libnpp-dev-12-6=12.3.1.54-1'), ('TERM', 'xterm'), ('ISAAC_ROS_WS', '/workspaces/isaac_ros-dev'), ('NV_CUDA_CUDART_VERSION', '12.6.68-1'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/opt/ros/humble/vcstool/scripts:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/src/tensorrt/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('NV_LIBCUBLAS_DEV_PACKAGE_NAME', 'libcublas-dev-12-6'), ('NV_LIBCUBLAS_PACKAGE', 'libcublas-12-6=12.6.1.4-1'), ('HOST_USER_UID', '1000'), ('NVARCH', 'arm64'), ('CUDSS_DIR', '/usr/local/libcudss-linux-0.3.0.9_cuda12-archive'), ('NV_LIBCUSPARSE_DEV_VERSION', '12.5.3.3-1'), ('DISPLAY', ':1'), ('NVIDIA_PRODUCT_NAME', 'CUDA'), ('LANG', 'en_US.UTF-8'), ('RMW_IMPLEMENTATION', 'rmw_fastrtps_cpp'), ('NV_CUDA_CUDART_DEV_VERSION', '12.6.68-1'), ('ROS_ROOT', '/opt/ros/humble'), ('SSH_AUTH_SOCK', '/ssh-agent'), ('AMENT_PREFIX_PATH', '/workspaces/isaac_ros-dev/ros2_ws/install/input:/workspaces/isaac_ros-dev/ros2_ws/install/action_client:/workspaces/isaac_ros-dev/ros2_ws/install/custom_interfaces:/workspaces/isaac_ros-dev/ros2_ws/install/action_server:/opt/ros/humble'), ('DEBIAN_FRONTEND', 'noninteractive'), ('SHELL', '/bin/bash'), ('TRT_INCLUDE_PATH', '/usr/include/aarch64-linux-gnu'), ('NV_LIBCUBLAS_DEV_PACKAGE', 'libcublas-dev-12-6=12.6.1.4-1'), ('NV_CUDA_NSIGHT_COMPUTE_DEV_PACKAGE', 'cuda-nsight-compute-12-6=12.6.11-1'), ('NVIDIA_REQUIRE_JETPACK_HOST_MOUNTS', 'base-only'), ('NV_NVTX_VERSION', '12.6.68-1'), ('NV_LIBNPP_VERSION', '12.3.1.54-1'), ('PWD', '/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/build/input'), ('PYTHONPATH', '/workspaces/isaac_ros-dev/ros2_ws/install/action_client/local/lib/python3.10/dist-packages:/workspaces/isaac_ros-dev/ros2_ws/install/custom_interfaces/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages:/opt/ros/humble/vcstool:'), ('NVIDIA_VISIBLE_DEVICES', 'void'), ('COLCON', '1'), ('NV_LIBNPP_DEV_VERSION', '12.3.1.54-1'), ('CMAKE_PREFIX_PATH', '/workspaces/isaac_ros-dev/ros2_ws/install/input:/workspaces/isaac_ros-dev/ros2_ws/install/action_client:/workspaces/isaac_ros-dev/ros2_ws/install/custom_interfaces:/workspaces/isaac_ros-dev/ros2_ws/install/action_server:/usr/local/libcudss-linux-0.3.0.9_cuda12-archive::/opt/ros/humble'), ('TRT_LIB_PATH', '/usr/lib/aarch64-linux-gnu')]), 'shell': False}
+[16.104588] (input) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[16.105348] (input) StdoutLine: {'line': b'-- Installing: /workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/install/input/lib/input/input_node\n'}
+[16.108511] (input) StdoutLine: {'line': b'-- Set runtime path of "/workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/install/input/lib/input/input_node" to ""\n'}
+[16.109020] (input) StdoutLine: {'line': b'-- Installing: /workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/install/input/share/input//launch\n'}
+[16.109309] (input) StdoutLine: {'line': b'-- Installing: /workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/install/input/share/input//launch/input.launch.py\n'}
+[16.109571] (input) StdoutLine: {'line': b'-- Installing: /workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/install/input/share/ament_index/resource_index/package_run_dependencies/input\n'}
+[16.109875] (input) StdoutLine: {'line': b'-- Installing: /workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/install/input/share/ament_index/resource_index/parent_prefix_path/input\n'}
+[16.110312] (input) StdoutLine: {'line': b'-- Installing: /workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/install/input/share/input/environment/ament_prefix_path.sh\n'}
+[16.110652] (input) StdoutLine: {'line': b'-- Installing: /workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/install/input/share/input/environment/ament_prefix_path.dsv\n'}
+[16.111044] (input) StdoutLine: {'line': b'-- Installing: /workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/install/input/share/input/environment/path.sh\n'}
+[16.111324] (input) StdoutLine: {'line': b'-- Installing: /workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/install/input/share/input/environment/path.dsv\n'}
+[16.111625] (input) StdoutLine: {'line': b'-- Installing: /workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/install/input/share/input/local_setup.bash\n'}
+[16.111915] (input) StdoutLine: {'line': b'-- Installing: /workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/install/input/share/input/local_setup.sh\n'}
+[16.112226] (input) StdoutLine: {'line': b'-- Installing: /workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/install/input/share/input/local_setup.zsh\n'}
+[16.112512] (input) StdoutLine: {'line': b'-- Installing: /workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/install/input/share/input/local_setup.dsv\n'}
+[16.112793] (input) StdoutLine: {'line': b'-- Installing: /workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/install/input/share/input/package.dsv\n'}
+[16.113478] (input) StdoutLine: {'line': b'-- Installing: /workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/install/input/share/ament_index/resource_index/packages/input\n'}
+[16.114261] (input) StdoutLine: {'line': b'-- Installing: /workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/install/input/share/input/cmake/inputConfig.cmake\n'}
+[16.115932] (input) StdoutLine: {'line': b'-- Installing: /workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/install/input/share/input/cmake/inputConfig-version.cmake\n'}
+[16.116125] (input) StdoutLine: {'line': b'-- Installing: /workspaces/isaac_ros-dev/ros2_ws/object-detection-jai0307-notatallVishal/install/input/share/input/package.xml\n'}
+[16.119536] (input) CommandEnded: {'returncode': 0}
+[16.123211] (-) TimerEvent: {}
+[16.171126] (input) JobEnded: {'identifier': 'input', 'rc': 0}
+[16.172640] (-) EventReactorShutdown: {}

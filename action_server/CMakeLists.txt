@@ -15,8 +15,8 @@ find_package(sensor_msgs REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(vision_msgs REQUIRED)
 
-add_executable(action_server src/server.cpp)
-ament_target_dependencies(action_server rclcpp custom_interfaces geometry_msgs sensor_msgs std_msgs vision_msgs)
+add_executable(action_server_node src/server.cpp)
+ament_target_dependencies(action_server_node rclcpp rclcpp_action custom_interfaces geometry_msgs sensor_msgs std_msgs vision_msgs)
 
 install(TARGETS
    action_server_node

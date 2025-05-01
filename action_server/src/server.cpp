@@ -33,6 +33,12 @@ Action Server Specs
 #include <cmath>
 #include <inttypes.h>
 
+#include <iostream>
+#include <fcntl.h>
+#include <termios.h>
+#include <string.h>
+#include <errno.h>
+#include <vector>
 #include "rclcpp/rclcpp.hpp"
 #include "rclcpp_action/rclcpp_action.hpp"
 #include <vision_msgs/msg/detection2_d_array.hpp>
@@ -40,7 +46,6 @@ Action Server Specs
 #include <vision_msgs/msg/object_hypothesis_with_pose.hpp>
 #include "custom_interfaces/action/detect.hpp"
 #include "geometry_msgs/msg/twist.hpp"
-#include "nav_msgs/msg/odometry.hpp"
 #include "std_msgs/msg/bool.hpp"
 #include "sensor_msgs/msg/image.hpp"
 
@@ -113,7 +118,7 @@ class TrackObjectServer : public rclcpp::Node
  {
 public:
   using Detect = custom_interfaces::action::Detect;
-  using GoalHandleDetect = rclcpp_action::ClientGoalHandle<Detect>;
+  using GoalHandleDetect = rclcpp_action::ServerGoalHandle<Detect>;
 
   explicit TrackObjectServer(const rclcpp::NodeOptions & options = rclcpp::NodeOptions())
   : Node("track_object_server", options)
@@ -197,7 +202,7 @@ private:
   }
   
 
-  uint8_t findAvgDepthBBOX(float size_x, float size_y, float objX, float objY, uint8_t depthData[]) {
+  uint8_t findAvgDepthBBOX(float size_x, float size_y, float objX, float objY, std::vector<uint8_t> depthData) {
 	float avg = 0.0f;
 
 	int start, end;
@@ -213,7 +218,8 @@ private:
 
   
   void depth_callback(const sensor_msgs::msg::Image::SharedPtr msg) {
-	  uint8_t data[] = msg->data;
+	  std::vector<uint8_t> data(msg->data.begin(), msg->data.begin() + 307200);
+
 
 	  avgDepth_BB = findAvgDepthBBOX(sizeX, sizeY, objX, objY, data);
 	  return;
@@ -231,7 +237,7 @@ private:
 	
     (void)uuid;
 	RCLCPP_INFO(this->get_logger(), "Accepted request to track: '%s'", goal->object_name.c_str());
-	reqObject = goal->object_name;
+	reqObjectName = goal->object_name;
     return rclcpp_action::GoalResponse::ACCEPT_AND_EXECUTE;
   }
 
@@ -308,8 +314,8 @@ private:
 	
 	int rfd = open_robot_port();
 	bool complete = false;
-
-	while(~complete) {
+	currState = T_WAIT;
+	while(!complete) {
 		
 		/* State Transition Logic & Output Logic */
 		switch (currState) {
@@ -334,6 +340,7 @@ private:
 				complete = true;
 				break;
 		}
+		currState = nextState;
 
 		/* Updating Client with Feedback */
 		goal_handle->publish_feedback(feedback);
@@ -345,7 +352,7 @@ private:
       result->result = "Mission Accomplished";
       goal_handle->succeed(result);
       RCLCPP_INFO(this->get_logger(), "Goal succeeded");
-	  stop_robot(rfd)
+	  stop_robot(rfd);
 	  close(rfd);
     }
 	
@@ -374,7 +381,7 @@ private:
   {
 	if(!objFound) return;
 	int dist = deltaXfromCenter(objX);
-	if(dist>0){send_json_info_base(.2, 2.9); return;}
+	if(dist>0){send_json_info_base(fd, .2, 2.9); return;}
 	send_json_info_base(fd, 0.2, -2.9);
 	return;
   }
